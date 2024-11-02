@@ -6,3 +6,4 @@ Contents
 
    Home <self>
    acca
+   about/特性列表
