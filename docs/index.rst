@@ -25,5 +25,4 @@ Contents
 --------
 
 .. toctree::
-
-   about/特性列表
+   about/特性列表.rst
