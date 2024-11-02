@@ -6,4 +6,4 @@ Contents
 
    Home <self>
    acca
-   about/特性列表
+   about/index
