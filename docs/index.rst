@@ -25,5 +25,4 @@ Contents
 --------
 
 .. toctree::
-
-   a
+   acca
