@@ -53,6 +53,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- HTML 输出选项 -------------------------------------------------
 
 # 用于 HTML 和 HTML 帮助页面的主题。请参阅文档以获取内置主题列表。
+html_title = "Planet Engine 文档"
 
 html_theme = "sphinx_rtd_theme"
 
