@@ -1,14 +1,5 @@
 .. include:: ../README.rst
 
-Mab
-=========
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :name: sec-home
-
-   home<self>
-
 Contents
 ===========
 .. toctree::
