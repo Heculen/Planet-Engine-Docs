@@ -1,7 +1,12 @@
 .. include:: ../README.rst
 
-Contents
-===========
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: 关于
+   :name: sec-about
+
+   关于/特性列表
 
 .. toctree::
    :hidden:
@@ -11,11 +16,10 @@ Contents
 
    入门/Planet Engine 简介
 
-
 .. toctree::
    :hidden:
    :maxdepth: 2
-   :caption: 关于
-   :name: sec-about
+   :caption: 手册
+   :name: sec-shouce
 
-   关于/特性列表
+   编写脚本
