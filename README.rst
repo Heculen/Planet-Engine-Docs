@@ -6,13 +6,13 @@ to this documentation, we recommend that you read the
 :ref:`introduction page <doc_about_intro>` to get an overview of what this
 documentation has to offer.
 
-.. note::本文档旨在帮助团队内部人员学习使用Planet Engine
+.. note:: 本文档旨在帮助团队内部人员学习使用Planet Engine
 
-  本引擎借鉴了Godot、Bevy、Panda3D等知名开源游戏引擎，整体框架遵循Godot，在本文档中，你可能会看到一些示例图片中引擎布局与主题与你实际使用的Planet Engine有区别，这是正常现象，可以直接根据本文档学习。
+          本引擎借鉴了Godot、Bevy、Panda3D等知名开源游戏引擎，整体框架遵循Godot，在本文档中，你可能会看到一些示例图片中引擎布局与主题与你实际使用的Planet Engine有区别，这是正常现象，可以直接根据本文档学习。
 
-  此外，你也可以去观看有关Godot、Bevy的教程，它们全都适用于Planet Engine引擎。一些Planet Engine特有的功能也会在本文档中详细列出
+          此外，你也可以去观看有关Godot、Bevy的教程，它们全都适用于Planet Engine引擎。一些Planet Engine特有的功能也会在本文档中详细列出
 
-.. warning::Planet Engine为Heculen内部使用的引擎，并不提供给非Heculen成员
+.. warning:: Planet Engine为Heculen内部使用的引擎，并不提供给非Heculen成员
 
 .. note:: This documentation is translated from the `original English one
             <https://docs.godotengine.org/en/stable>`_ by community members
