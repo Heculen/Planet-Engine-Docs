@@ -99,34 +99,22 @@ GDscript 示例
         var lv = Something.new()
         print(lv.a)
 
-If you have previous experience with statically typed languages such as
-C, C++, or C# but never used a dynamically typed one before, it is advised you
-read this tutorial: :ref:`doc_gdscript_more_efficiently`.
+如果您以前有使用静态类型语言（例如 C、C++ 或 C#）的经验，但之前从未使用过动态类型语言，建议您阅读 `本教程 <http:/www.bilibili.com>`_ 。
 
-Identifiers
+标识符
 -----------
 
-Any string that restricts itself to alphabetic characters (``a`` to ``z`` and
-``A`` to ``Z``), digits (``0`` to ``9``) and ``_`` qualifies as an identifier.
-Additionally, identifiers must not begin with a digit. Identifiers are
-case-sensitive (``foo`` is different from ``FOO``).
+任何限制为字母字符（``a`` 到 ``z`` 和 ``A`` 到 ``Z``）、数字（``0`` 到 ``9``）和 ``_`` 可以作为标识符。此外，标识符不得以数字开头。标识符区分大小写（ ``foo`` 与 ``FOO`` 不同）。
 
-Identifiers may also contain most Unicode characters part of
-`UAX#31 <https://www.unicode.org/reports/tr31/>`__. This allows you to use
-identifier names written in languages other than English. Unicode characters
-that are considered "confusable" for ASCII characters and emoji are not allowed
-in identifiers.
+标识符还可能包含 `UAX#31 <https://www.unicode.org/reports/tr31/>`__ 的大多数 Unicode 字符部分。这允许您使用以英语以外的语言编写的标识符名称。标识符中不允许使用被视为与 ASCII 字符和表情符号“混淆”的 Unicode 字符。
 
-Keywords
+关键字
 --------
 
-The following is the list of keywords supported by the language. Since
-keywords are reserved words (tokens), they can't be used as identifiers.
-Operators (like ``in``, ``not``, ``and`` or ``or``) and names of built-in types
-as listed in the following sections are also reserved.
+以下是该语言支持的关键字列表。由于关键字是保留字（标记），因此它们不能用
+作标识符。以下各节中列出的运算符（如 ``in`` 、 ``not`` 、 ``and`` 或 ``or`` ）和内置类型的名称也被保留。
 
-Keywords are defined in the `GDScript tokenizer <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_
-in case you want to take a look under the hood.
+关键字在 `GDScript tokenizer <https://github.com/godotengine/godot/blob/master/modules/gdscript/gdscript_tokenizer.cpp>`_ 中定义，以防您想深入了解。
 
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 |  Keyword   | Description                                                                                                                                       |
