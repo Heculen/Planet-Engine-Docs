@@ -3,7 +3,7 @@
 本页旨在列出 Planet Engine 当前支持的所有特性。
 
 平台
-=========
+-----------
 
 可以运行编辑器以及导出项目的：
 * Windows（x86、64 位和 32 位）。
@@ -20,14 +20,15 @@
 * 主机<https://github.com/Heculen/Transform-Engine-Docs/wiki/Planet-Engine-主机支持> 。
 
 Godot 的目标是尽可能地独立于平台，并且可以相对轻松地 移植到新平台 。
->[!NOTE]
->在 Planet Engine 中用 C# 编写的项目目前无法导出到 Web 平台。 C# 的Android 和 iOS 平台支持但仍处于实验阶段，并且 [存在一些限制](https://github.com/Heculen/Transform-Engine-Docs/wiki/c#-net) 。
+
+.. note::
+   在 Planet Engine 中用 C# 编写的项目目前无法导出到 Web 平台。 C# 的Android 和 iOS 平台支持但仍处于实验阶段，并且 存在一些限制<https://github.com/Heculen/Transform-Engine-Docs/wiki/c#-net> 。
 
 编辑器
-===========
+------------
 
 特性：
------------
+^^^^^^^^^^
 
 * 场景树编辑器。
 * 内置脚本编辑器。
@@ -52,7 +53,7 @@ Godot 的目标是尽可能地独立于平台，并且可以相对轻松地 移�
 * 在项目管理器中，从 资产库下载项目<www.bilibili.com> 并直接导入。
 
 渲染
-========
+-----------
 
 提供 3 种渲染方法（运行在 2 种渲染驱动上）：
 * Forward+，在Vulkan 1.0 以上运行（具备可选的 Vulkan 1.1和 1.2 功能）。仅适用于桌面平台的最先进图形后端。在桌面平台上默认使用。
@@ -60,7 +61,7 @@ Godot 的目标是尽可能地独立于平台，并且可以相对轻松地 移�
 * Compatibility（兼容），在 OpenGL 3.3、OpenGL ES 3.0 和 WebGL 2.0 以上运行。最低级的图形后端，适合低端桌面和移动平台。在 Web 平台上默认使用。
 
 2D 图形
-=========
+------------
 * 精灵、多边形和线条渲染。
     * 用于绘制线和多边形的高级工具，例如Polygon2D和Line2D，支持纹理。
 * AnimatedSprite2D 辅助制作动画精灵。
