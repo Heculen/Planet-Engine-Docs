@@ -1,12 +1,21 @@
 .. include:: ../README.rst
 
-Contents
---------
+Mab
+=========
 .. toctree::
    :hidden:
-   :maxdepth: 1
-   :caption: About
+   :maxdepth: 2
+   :name: sec-home
+
+   home<self>
+
+Contents
+===========
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: about
    :name: sec-general
 
-   Home <self>
-   about/index
+   about/ddd
+   about/特性列表
