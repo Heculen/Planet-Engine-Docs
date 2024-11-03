@@ -1,54 +1,27 @@
 :allow_comments: False
 
-Scripting
+代码
 =========
 
-This section covers programming languages and core features to code your games
-in Godot.
+本节介绍在 Planet Engine 中编写游戏的编程语言和核心功能。在这里，您将找到更具体部
+分中尚未涵盖的信息。例如，要了解输入，我们建议您阅读 dsf 。
 
-Here, you will find information that is not already covered in more specific
-sections. For instance, to learn about inputs, we recommend you to read
-:ref:`Inputs <toc-learn-features-inputs>`.
+.. rubric:: 编程语言
 
-.. rubric:: Programming languages
-
-The sections below each focus on a given programming language.
+以下各节重点介绍给定的编程语言。
 
 .. toctree::
    :maxdepth: 1
    :name: toc-learn-scripting
 
    gdscript/index
-   c_sharp/index
-   gdextension/index
+.. 未来要在这里添上c#和gd扩展
 
-Core features
--------------
+.. Core features
+   -------------
 
-Some features are specific to the engine and are available in all supported
-languages. Whether you code in GDScript, C#, or another language, the pages
-below will help you make the most of Godot.
+   Some features are specific to the engine and are available in all supported
+   languages. Whether you code in GDScript, C#, or another language, the pages
+   below will help you make the most of Godot.
 
-.. To split and organize better, into some related toctrees?
-
-.. toctree::
-   :maxdepth: 1
-   :name: toc-scripting-core-features
-
-   how_to_read_the_godot_api
-   debug/index
-   idle_and_physics_processing
-   groups
-   nodes_and_scene_instances
-   overridable_functions
-   cross_language_scripting
-   creating_script_templates
-   evaluating_expressions
-   change_scenes_manually
-   instancing_with_signals
-   pausing_games
-   filesystem
-   resources
-   singletons_autoload
-   scene_tree
-   scene_unique_nodes
+.. 未来要在这里添加另一个目录
