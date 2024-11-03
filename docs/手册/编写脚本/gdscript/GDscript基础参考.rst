@@ -3,7 +3,7 @@
 GDScript reference
 ==================
 
-GDScript 是一种高级的、 `面向对象 <https://en.wikipedia.org/wiki/Object-oriented_programming>`_ 、 `命令式 <https://en.wikipedia.org/wiki/Imperative_programming>`_ ，以及 `渐进式打字<https://en.wikipedia.org/wiki/Gradual_typing>`_ 为 Planet Engine 构建的编程语言。它使用基于缩进的语法，类似于 `Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_ 等语言。
+GDScript 是一种高级的、 `面向对象 <https://en.wikipedia.org/wiki/Object-oriented_programming>`_ 、 `命令式 <https://en.wikipedia.org/wiki/Imperative_programming>`_ ，以及 `渐进类型 <https://en.wikipedia.org/wiki/Gradual_typing>`_ 为 Planet Engine 构建的编程语言。它使用基于缩进的语法，类似于 `Python <https://en.wikipedia.org/wiki/Python_%28programming_language%29>`_ 等语言。
 其目标是针对 Planet Engine 进行优化并与其紧密集成，从而为内容创建和集成提供极大的灵活性。
 
 GDScript 完全独立于 Python，并不基于它。
@@ -15,20 +15,20 @@ GDscript 示例
 
 ::
 
-    # Everything after "#" is a comment.
-    # A file is a class!
+    # “#”号后的都是注释
+    # 一个文件就是一个类！
 
-    # (optional) icon to show in the editor dialogs:
+    # （可选）在编辑器对话框中显示的图标：
     @icon("res://path/to/optional/icon.svg")
 
-    # (optional) class definition:
+    # （可选）类定义：
     class_name MyClass
 
-    # Inheritance:
+    # 继承:
     extends BaseClass
 
 
-    # Member variables.
+    # 成员变量
     var a = 5
     var s = "Hello"
     var arr = [1, 2, 3]
@@ -37,20 +37,20 @@ GDscript 示例
     var typed_var: int
     var inferred_type := "String"
 
-    # Constants.
+    # 常量
     const ANSWER = 42
     const THE_NAME = "Charly"
 
-    # Enums.
+    # 枚举
     enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
     enum Named {THING_1, THING_2, ANOTHER_THING = -1}
 
-    # Built-in vector types.
+    # 内部定义的向量类型
     var v2 = Vector2(1, 2)
     var v3 = Vector3(1, 2, 3)
 
 
-    # Functions.
+    # 函数
     func some_function(param1, param2, param3):
         const local_const = 5
 
@@ -77,23 +77,23 @@ GDscript 示例
         return local_var
 
 
-    # Functions override functions with the same name on the base/super class.
-    # If you still want to call them, use "super":
+    # 函数会覆盖基类/超类上同名的函数。
+    # 如果您仍然想调用它们，请使用“super”：
     func something(p1, p2):
         super(p1, p2)
 
 
-    # It's also possible to call another function in the super class:
+    # 也可以调用超类中的另一个函数：
     func other_something(p1, p2):
         super.something(p1, p2)
 
 
-    # Inner class
+    # 内部类
     class Something:
         var a = 10
 
 
-    # Constructor
+    # 构造函数
     func _init():
         print("Constructed!")
         var lv = Something.new()
