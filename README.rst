@@ -1,11 +1,18 @@
 ﻿Planet Engine Docs – *master* 分支
 ============================
 
-Welcome to the official documentation of `Godot Engine <https://godotengine.org>`__,
-the free and open source community-driven 2D and 3D game engine! If you are new
+欢迎来到Planet Engine的官方文档，这是一个 2D 和 3D 游戏引擎！ If you are new
 to this documentation, we recommend that you read the
 :ref:`introduction page <doc_about_intro>` to get an overview of what this
 documentation has to offer.
+
+.. note::本文档旨在帮助团队内部人员学习使用Planet Engine
+
+  本引擎借鉴了Godot、Bevy、Panda3D等知名开源游戏引擎，整体框架遵循Godot，在本文档中，你可能会看到一些示例图片中引擎布局与主题与你实际使用的Planet Engine有区别，这是正常现象，可以直接根据本文档学习。
+
+  此外，你也可以去观看有关Godot、Bevy的教程，它们全都适用于Planet Engine引擎。一些Planet Engine特有的功能也会在本文档中详细列出
+
+.. warning::Planet Engine为Heculen内部使用的引擎，并不提供给非Heculen成员
 
 侧栏中的目录应该可以让您轻松访问您感兴趣的主题的文档。您还可以使用左上角的搜索功能。
 
