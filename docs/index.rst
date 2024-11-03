@@ -22,4 +22,4 @@
    :caption: 手册
    :name: sec-shouce
 
-   编写脚本
+   手册/编写脚本/index.rst
