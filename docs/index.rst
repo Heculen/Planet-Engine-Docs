@@ -2,14 +2,6 @@
 
 Contents
 ===========
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :caption: about
-   :name: sec-general
-
-   about/ddd
-   about/特性列表
 
 .. toctree::
    :hidden:
@@ -18,6 +10,7 @@ Contents
    :name: sec-rumen
 
    入门/Planet Engine 简介
+
 
 .. toctree::
    :hidden:
