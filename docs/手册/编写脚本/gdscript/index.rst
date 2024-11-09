@@ -1,7 +1,5 @@
-:allow_comments: False
-
 GDScript
-========
+-----------------
 
 .. toctree::
    :maxdepth: 1
