@@ -9,7 +9,7 @@ GDScript 是一种高级的、 `面向对象 <https://en.wikipedia.org/wiki/Obje
 GDScript 完全独立于 Python，并不基于它。
 
 GDscript 示例
--------------------
+""""""""""""""""
 
 考虑到部分开发者了解过编程语法，学起GDScript来会较为上手，这里给出一个简单的 GDScript 示例供参考学习。
 
