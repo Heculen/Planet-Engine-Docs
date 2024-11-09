@@ -145,23 +145,23 @@ GDscript 示例
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 | class_name | 将脚本定义为具有指定名称的全局可访问类。请参阅 注册命名类_                                                                                        |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| extends    | Defines what class to extend with the current class.                                                                                              |
+| extends    | 定义用当前类扩展哪个类                                                                                                                            |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| is         | Tests whether a variable extends a given class, or is of a given built-in type.                                                                   |
+| is         | 测试变量是否扩展给定的类，或者是否属于给定的内置类型                                                                                              |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| in         | Tests whether a value is within a string, array, range, dictionary, or node. When used with ``for``, it iterates through them instead of testing. |
+| in         | 通常情况下用来检测字符串、列表、范围、字典、节点中是否存在某个值，而和 ``for`` 关键字连用时，则用于遍历字符串、列表、范围、字典、节点中的内容     |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| as         | Cast the value to a given type if possible.                                                                                                       |
+| as         | 尝试将值转换为给定类型的值                                                                                                                        |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| self       | Refers to current class instance.                                                                                                                 |
+| self       | 引用当前类实例                                                                                                                                    |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| super      | Resolves the scope of the parent method. See `Inheritance`_.                                                                                      |
+| super      | 解析父类作用域内的方法，参见 继承                                                                                                                 |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| signal     | Defines a signal.                                                                                                                                 |
+| signal     | 定义一个信号                                                                                                                                      |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| func       | Defines a function.                                                                                                                               |
+| func       | 定义一个函数                                                                                                                                      |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-| static     | Defines a static function or a static member variable.                                                                                            |
+| static     | 将一个函数声明为静态函数，或将一个成员变量声明为静态成员变量                                                                                      |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 | const      | Defines a constant.                                                                                                                               |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -191,12 +191,11 @@ GDscript 示例
 | NAN        | NAN (not a number) constant. Used as impossible result from calculations.                                                                         |
 +------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Operators
+运算符
 ---------
 
-The following is the list of supported operators and their precedence. All binary operators are `left-associative <https://en.wikipedia.org/wiki/Operator_associativity>`_,
-including the ``**`` operator. This means that ``2 ** 2 ** 3`` is equal to ``(2 ** 2) ** 3``. Use parentheses to explicitly specify precedence you need, for
-example ``2 ** (2 ** 3)``. The ternary ``if/else`` operator is right-associative.
+下列为 GDScript 所支持的运算符及其运算优先级。所有二进制运算符均为 `左结合运算符 <https://en.wikipedia.org/wiki/Operator_associativity>`_ ，其中就包括 ``**`` ，即 ``2 ** 2 ** 3`` 等价于 ``(2 ** 2) ** 3`` 。为避免运
+算歧义，请使用括号来处理该运算的优先级，如 ``2 ** (2 ** 3)`` 。
 
 +---------------------------------------+-----------------------------------------------------------------------------+
 | **Operator**                          | **Description**                                                             |
@@ -290,20 +289,18 @@ example ``2 ** (2 ** 3)``. The ternary ``if/else`` operator is right-associative
 
 .. note::
 
-    The behavior of some operators may differ from what you expect:
+    一些运算符的运算机制可能会与你所预期的运算机制有所不同：
 
-    1. If both operands of the ``/`` operator are :ref:`int <class_int>`, then integer division is performed instead of fractional. For example ``5 / 2 == 2``, not ``2.5``.
-       If this is not desired, use at least one :ref:`float <class_float>` literal (``x / 2.0``), cast (``float(x) / y``), or multiply by ``1.0`` (``x * 1.0 / y``).
-    2. The ``%`` operator is only available for ints, for floats use the :ref:`fmod() <class_@GlobalScope_method_fmod>` function.
-    3. For negative values, the ``%`` operator and ``fmod()`` use `truncation <https://en.wikipedia.org/wiki/Truncation>`_ instead of rounding towards negative infinity.
-       This means that the remainder has a sign. If you need the remainder in a mathematical sense, use the :ref:`posmod() <class_@GlobalScope_method_posmod>` and
-       :ref:`fposmod() <class_@GlobalScope_method_fposmod>` functions instead.
-    4. The ``==`` and ``!=`` operators sometimes allow you to compare values of different types (for example, ``1 == 1.0`` is true), but in other cases it can cause
-       a runtime error. If you're not sure about the types of the operands, you can safely use the :ref:`is_same() <class_@GlobalScope_method_is_same>` function
-       (but note that it is more strict about types and references). To compare floats, use the :ref:`is_equal_approx() <class_@GlobalScope_method_is_equal_approx>`
-       and :ref:`is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` functions instead.
+    1. 若运算符 ``/`` 两端的数值均为 :ref:`int <class_int>`，则进行整数除法而非浮点数除法。例如： ``5 /2 == 2`` 中该算式的结果为 ``2`` 而非 ``2.5`` 。若希望进行浮点数运算，请将该
+       运算符两端的其中一个数值的类型改为 :ref:`float <class_float>` ，如直接使用浮点数（``x / 2.0``）、转换类型（``float(x) / y``）、乘以 ``1.0`` （``x * 1.0 / y``）等。
+    2. 运算符 ``%`` 仅适用于整型数值的取余运算，对于小数的取余运算，请使用 :ref:`fmod() <class_@GlobalScope_method_fmod>` 方法。
+    3. 对于负值， ``%`` 运算符和 ``fmod()`` 函数会使用 `截断算法 <https://en.wikipedia.org/wiki/Truncation>`_ 进行运算，而非向负无穷大舍入，此时余数会带有
+       符号（即余数可能为负）。如果你需要数学意义上的余数，请改用 :ref:`posmod() <class_@GlobalScope_method_posmod>` 和 :ref:`fposmod() <class_@GlobalScope_method_fposmod>` 函数。
+    4. ``==`` 和 ``!=`` 运算符在有些情况下允许比较不同类型的值（例如，``1 == 1.0`` 的结果为真），但在其他情况下可能会发生运行时错误。若你
+       不能确定操作数的类型，可使用 :ref:`is_same() <class_@GlobalScope_method_is_same>` 函数来进行安全比较（但请注意，该函数对类型和
+       引用更加严格）。要比较浮点数，请改用 :ref:`is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` 和 :ref:`is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` 函数。
 
-Literals
+字面量
 --------
 
 +---------------------------------+-------------------------------------------+
@@ -334,7 +331,7 @@ Literals
 | ``^"Node/Label"``               | :ref:`NodePath <class_NodePath>`          |
 +---------------------------------+-------------------------------------------+
 
-There are also two constructs that look like literals, but actually are not:
+也有两种长得像字面量，但实际上不是字面量的量：
 
 +---------------------------------+-------------------------------------------+
 | **Example**                     | **Description**                           |
@@ -344,15 +341,14 @@ There are also two constructs that look like literals, but actually are not:
 | ``%UniqueNode``                 | Shorthand for ``get_node("%UniqueNode")`` |
 +---------------------------------+-------------------------------------------+
 
-Integers and floats can have their numbers separated with ``_`` to make them more readable.
-The following ways to write numbers are all valid::
+整数和浮点数可用 ``_`` 进行分隔，使其更加易读。以下表示数字的方法均有效::
 
     12_345_678  # Equal to 12345678.
     3.141_592_7  # Equal to 3.1415927.
     0x8080_0000_ffff  # Equal to 0x80800000ffff.
     0b11_00_11_00  # Equal to 0b11001100.
 
-**Regular string literals** can contain the following escape sequences:
+**常规字符串字面量** 内可包含以下转义序列：
 
 +---------------------+---------------------------------+
 | **Escape sequence** | **Expands to**                  |
@@ -386,10 +382,10 @@ The following ways to write numbers are all valid::
 |                     | (hexadecimal, case-insensitive) |
 +---------------------+---------------------------------+
 
-There are two ways to represent an escaped Unicode character above ``0xFFFF``:
+有两种方法可以表示 ``0xFFFF`` 以上的转义 Unicode 字符：
 
-- as a `UTF-16 surrogate pair <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ ``\uXXXX\uXXXX``.
-- as a single UTF-32 codepoint ``\UXXXXXX``.
+- 使用 `UTF-16 代理 <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ 对 ``\uXXXX\uXXXX`` 表示。
+- 使用单个 UTF-32 码位 ``\UXXXXXX`` 表示。
 
 Also, using ``\`` followed by a newline inside a string will allow you to continue it in the next line,
 without inserting a newline character in the string itself.
