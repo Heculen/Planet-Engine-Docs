@@ -13,6 +13,7 @@
 .. toctree::
    :maxdepth: 1
    :name: toc-learn-scripting
+   :hidden:
 
    gdscript/index
 .. 未来要在这里添上c#和gd扩展
