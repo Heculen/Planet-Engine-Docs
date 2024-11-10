@@ -442,10 +442,7 @@ GDScript 也支持 :ref:`GDScript 格式字符串 <doc_gdscript_printf>`
 ``@onready`` 注解
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-When using nodes, it's common to desire to keep references to parts
-of the scene in a variable. As scenes are only warranted to be
-configured when entering the active scene tree, the sub-nodes can only
-be obtained when a call to ``Node._ready()`` is made.
+使用节点时，经常会需要将场景中某一部分的引用存放在变量中。由于场景只有在进入活动场景树时才会进行正确配置，故而仅在调用 ``Node._ready()`` 时才能获得子节点。
 
 ::
 
@@ -455,19 +452,15 @@ be obtained when a call to ``Node._ready()`` is made.
     func _ready():
         my_label = get_node("MyLabel")
 
-This can get a little cumbersome, especially when nodes and external
-references pile up. For this, GDScript has the ``@onready`` annotation, that
-defers initialization of a member variable until ``_ready()`` is called. It
-can replace the above code with a single line::
+这种操作较为麻烦，而且节点和外部引用越多，操作起来就会越显不便。为此，GDScript 提供了 ``@onready`` 注解 ，将成员变量
+的初始化操作推迟到该节点调用 ``_ready()`` 的时刻进行。使用该注解，可以用一行代码替换掉上面的几行代码::
 
     @onready var my_label = get_node("MyLabel")
 
 .. warning::
 
-    Applying ``@onready`` and any ``@export`` annotation to the same variable
-    doesn't work as you might expect. The ``@onready`` annotation will cause
-    the default value to be set after the ``@export`` takes effect and will
-    override it::
+    同时使用 ``@onready`` 和 ``@export`` 这两个注解去修饰同一个变量，其效果并不会如你所愿，因为 ``@onready`` 注解会使
+    该变量的默认值在 ``@export`` 注解起效后被赋值，导致该默认值被 ``@onready`` 的效果所覆盖：
 
         @export var a = "init_value_a"
         @onready @export var b = "init_value_b"
@@ -482,43 +475,38 @@ can replace the above code with a single line::
         func _ready():
             prints(a, b) # exported_value_a init_value_b
 
-    Therefore, the ``ONREADY_WITH_EXPORT`` warning is generated, which is treated
-    as an error by default. We do not recommend disabling or ignoring it.
+    为此，本引擎提供了 ``ONREADY_WITH_EXPORT`` 警告选项，默认将该操作作为编辑器错误进行处理。我们并不推荐关闭或忽略该警告选项。
 
-Comments
+注释
 --------
 
-Anything from a ``#`` to the end of the line is ignored and is
-considered a comment.
+``#`` 所在行的所有内容都会被忽略，会视为注释进行处理。
 
 ::
 
-    # This is a comment.
+    # 这是一个注释
 
 .. tip::
 
-    In the Godot script editor, special keywords are highlighted within comments
-    to bring the user's attention to specific comments:
+    在 Godot 的脚本编辑器中，一些特殊关键字会在注释中高亮显示以提醒用户:
 
-    - **Critical** *(appears in red)*: ``ALERT``, ``ATTENTION``, ``CAUTION``,
+    - **关键提示** *(标红)*: ``ALERT``, ``ATTENTION``, ``CAUTION``,
       ``CRITICAL``, ``DANGER``, ``SECURITY``
-    - **Warning** *(appears in yellow)*: ``BUG``, ``DEPRECATED``, ``FIXME``,
+    - **警告提示** *(标黄)*: ``BUG``, ``DEPRECATED``, ``FIXME``,
       ``HACK``, ``TASK``, ``TBD``, ``TODO``, ``WARNING``
-    - **Notice** *(appears in green)*: ``INFO``, ``NOTE``, ``NOTICE``, ``TEST``,
+    - **一般提示** *(标绿)*: ``INFO``, ``NOTE``, ``NOTICE``, ``TEST``,
       ``TESTING``
 
-    These keywords are case-sensitive, so they must be written in uppercase for them
-    to be recognized:
+    这些关键字均大小写敏感，故需要全大写以保证能被引擎所识别：
 
     ::
 
-        # In the example below, "TODO" will appear in yellow by default.
-        # The `:` symbol after the keyword is not required, but it's often used.
+        # 在下面的示例中，“TODO”默认显示为黄色。
+        # 关键字后面的“:”符号不是必需的，但经常使用。
 
-        # TODO: Add more items for the player to choose from.
+        # TODO: 添加更多物品供玩家选择
 
-    The list of highlighted keywords and their colors can be changed in the **Text
-    Editor > Theme > Comment Markers** section of the Editor Settings.
+    可在编辑器设置的 **文本编辑器 > 主题 > 注释标记** 部分中更改突出显示的关键字列表及其颜色。
 
 Use two hash symbols (``##``) instead of one (``#``) to add a *documentation
 comment*, which will appear in the script documentation and in the inspector
