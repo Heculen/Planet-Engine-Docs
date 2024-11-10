@@ -460,7 +460,7 @@ GDScript 也支持 :ref:`GDScript 格式字符串 <doc_gdscript_printf>`
 .. warning::
 
     同时使用 ``@onready`` 和 ``@export`` 这两个注解去修饰同一个变量，其效果并不会如你所愿，因为 ``@onready`` 注解会使
-    该变量的默认值在 ``@export`` 注解起效后被赋值，导致该默认值被 ``@onready`` 的效果所覆盖：
+    该变量的默认值在 ``@export`` 注解起效后被赋值，导致该默认值被 ``@onready`` 的效果所覆盖::
 
         @export var a = "init_value_a"
         @onready @export var b = "init_value_b"
@@ -508,31 +508,23 @@ GDScript 也支持 :ref:`GDScript 格式字符串 <doc_gdscript_printf>`
 
     可在编辑器设置的 **文本编辑器 > 主题 > 注释标记** 部分中更改突出显示的关键字列表及其颜色。
 
-Use two hash symbols (``##``) instead of one (``#``) to add a *documentation
-comment*, which will appear in the script documentation and in the inspector
-description of an exported variable. Documentation comments must be placed
-directly *above* a documentable item (such as a member variable), or at the top
-of a file. Dedicated formatting options are also available. See
-:ref:`doc_gdscript_documentation_comments` for details.
-
+使用两个哈希符号（``##``）而不是一个（``#``）来添加 *文档注释*，该注释将出现在脚本文档和导出变量的检查器描述中。文档注释必须直接放
+置在可记录项目（例如成员变量）的 *上方*，或者放置在文件的顶部。还提供专用格式选项。有关详细信息，请参阅 :ref:`doc_gdscript_documentation_comments`。
 
 ::
-    ## This comment will appear in the script documentation.
+    ## 该注释将出现在脚本文档中。
     var value
 
-    ## This comment will appear in the inspector tooltip, and in the documentation.
+    ## 此注释将出现在检查器工具提示和文档中。
     @export var exported_value
 
-Code regions
+代码块
 ------------
 
-Code regions are special types of comments that the script editor understands as
-*foldable regions*. This means that after writing code region comments, you can
-collapse and expand the region by clicking the arrow that appears at the left of
-the comment. This arrow appears within a purple square to be distinguishable
-from standard code folding.
+代码区块是一种特殊类型的注释，脚本编辑器将其理解为 *可折叠区块*，即在编写代码区块注释后，可以通过
+点击注释左侧出现的箭头来折叠和展开该区块。该箭头用一个紫色方块包围起来，以区别于标准的代码折叠。
 
-The syntax is as follows:
+语法如下:
 
 ::
 
