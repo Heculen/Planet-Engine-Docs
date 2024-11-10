@@ -387,63 +387,49 @@ GDscript 示例
 - 使用 `UTF-16 代理 <https://en.wikipedia.org/wiki/UTF-16#Code_points_from_U+010000_to_U+10FFFF>`_ 对 ``\uXXXX\uXXXX`` 表示。
 - 使用单个 UTF-32 码位 ``\UXXXXXX`` 表示。
 
-Also, using ``\`` followed by a newline inside a string will allow you to continue it in the next line,
-without inserting a newline character in the string itself.
+此外，在字符串中使用 ``\`` 后换行可以让斜杠后的文字自动换行，而无需在字符串中插入换行符。
 
-A string enclosed in quotes of one type (for example ``"``) can contain quotes of another type
-(for example ``'``) without escaping. Triple-quoted strings allow you to avoid escaping up to
-two consecutive quotes of the same type (unless they are adjacent to the string edges).
+使用某一种引号（如 ``"``）构成的字符串，无需转义即可包含另一种引号（如 ``'``），而三引号字符串在与其他字符串边缘不相邻的情况下，最多可避免连续两个同种引号的转义。
 
-**Raw string literals** always encode the string as it appears in the source code.
-This is especially useful for regular expressions. A raw string literal doesn't process escape sequences,
-however it does recognize ``\\`` and ``\"`` (``\'``) and replaces them with themselves.
-Thus, a string can have a quote that matches the opening one, but only if it's preceded by a backslash.
+**原始字符串字面量** 始终按照源代码中出现的方式对字符串进行编码，特别适用于正则表达式当中。原始字符串
+虽不处理转义序列，但可以识别 ``\\`` 和 ``\"`` （ ``\'`` ）等字符，并将其替换为其自身。一个字符串内可以含有一对相匹配的引号，但这些引号前面必须有一个反斜杠才可以让字符串包含它们。
 
 ::
 
-    print("\tchar=\"\\t\"")  # Prints `    char="\t"`.
-    print(r"\tchar=\"\\t\"") # Prints `\tchar=\"\\t\"`.
+    print("\tchar=\"\\t\"")  # 打印 `    char="\t"`
+    print(r"\tchar=\"\\t\"") # 打印 `\tchar=\"\\t\"`
 
 .. note::
 
-    Some strings cannot be represented using raw string literals: you cannot have an odd number
-    of backslashes at the end of a string or have an unescaped opening quote inside the string.
-    However, in practice this doesn't matter since you can use a different quote type
-    or use concatenation with a regular string literal.
+   而有些字符串却不能使用原始字符串字面量来表示：不能在字符串末尾有奇数个反斜杠，不能在字符串内部有未转义的开引号。但在实际应用中，这些问题
+   并不重要，因为你可以通过使用不同类型的引号，或者与普通字符串字面量进行拼接，来解决这个问题。
 
-GDScript also supports :ref:`format strings <doc_gdscript_printf>`.
+GDScript 也支持 :ref:`GDScript 格式字符串 <doc_gdscript_printf>`
 
-Annotations
+注解
 -----------
 
-Annotations are special tokens in GDScript that act as modifiers to a script or
-its code and may affect how the script is treated by the Godot engine or
-editor.
+注解是 GDScript 中的一类特殊标记，用来修饰脚本或脚本中的代码，影响 Godot 引擎或编辑器对该脚本或代码的所产生的效果。
 
-Every annotation starts with the ``@`` character and is specified by a name. A
-detailed description and example for each annotation can be found inside the
-:ref:`GDScript class reference <class_@GDScript>`.
+每个注解均以 ``@`` 符号开头，加以注解名称而构成。有关注解的详细说明及其使用范例，请参考 :ref:`GDScript class reference <class_@GDScript>` 。
 
-For instance, you can use it to export a value to the editor::
+比如，可以将变量导出到编辑器中::
 
     @export_range(1, 100, 1, "or_greater")
     var ranged_var: int = 50
 
-For more information about exporting properties, read the :ref:`GDScript exports <doc_gdscript_exports>`
-article.
+要获取更多关于导出属性的信息，请参阅 :ref:`GDScript exports <doc_gdscript_exports>`。
 
-Any constant expression compatible with the required argument type can be passed as an annotation argument value::
+所有与注解要求传入的参数类型相符、位置相配的常量表达式均可作为该注解的参数传入其中::
 
     const MAX_SPEED = 120.0
 
     @export_range(0.0, 0.5 * MAX_SPEED)
     var initial_speed: float = 0.25 * MAX_SPEED
 
-Annotations can be specified one per line or all in the same line. They affect
-the next statement that isn't an annotation. Annotations can have arguments sent
-between parentheses and separated by commas.
+注解既可单行修饰，也可多行修饰，修饰离该注解最近的非注解语句。注解可携带参数，每个参数均在注解名后的括号内，彼此之间用逗号隔开。
 
-Both of these are the same::
+以下两个示例效果等价::
 
     @annotation_a
     @annotation_b
@@ -453,7 +439,7 @@ Both of these are the same::
 
 .. _doc_gdscript_onready_annotation:
 
-``@onready`` annotation
+``@onready`` 注解
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 When using nodes, it's common to desire to keep references to parts
