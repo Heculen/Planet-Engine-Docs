@@ -15,6 +15,7 @@
    :name: sec-rumen
 
    入门/Planet Engine 简介
+   入门/学习用GDscript编程
 
 .. toctree::
    :hidden:
