@@ -16,6 +16,9 @@
 
    入门/Planet Engine 简介
    入门/学习用GDscript编程
+   入门/Planet Engine关键概念概述
+   入门/初识 Planet Engine 编辑器
+   入门/学习新特性
 
 .. toctree::
    :hidden:
