@@ -510,7 +510,6 @@ GDScript 也支持 :ref:`GDScript 格式字符串 <doc_gdscript_printf>`
 
 使用两个哈希符号（``##``）而不是一个（``#``）来添加 *文档注释*，该注释将出现在脚本文档和导出变量的检查器描述中。文档注释必须直接放
 置在可记录项目（例如成员变量）的 *上方*，或者放置在文件的顶部。还提供专用格式选项。有关详细信息，请参阅 :ref:`doc_gdscript_documentation_comments`。
-
 ::
     ## 该注释将出现在脚本文档中。
     var value
@@ -528,33 +527,31 @@ GDScript 也支持 :ref:`GDScript 格式字符串 <doc_gdscript_printf>`
 
 ::
 
-    # Important: There must be *no* space between the `#` and `region` or `endregion`.
+    # 重要提示：“#”和“region”或“endregion”之间不能有空格
 
-    # Region without a description:
+    # 没有描述的代码块：
     #region
     ...
     #endregion
 
-    # Region with a description:
-    #region Some description that is displayed even when collapsed
+    # 有描述的代码块：
+    #region 这里是代码块描述
     ...
     #endregion
 
 .. tip::
 
-    To create a code region quickly, select several lines in the script editor,
-    right-click the selection then choose **Create Code Region**. The region
-    description will be selected automatically for editing.
+    要快速创建代码区域，请在脚本编辑器中选择几行，右键单击所选内容，然后选择**创建代码区域**，将自动选择区域描述进行编辑。
 
-    It is possible to nest code regions within other code regions.
+    可将代码区块嵌套在其他代码区块内。
 
-Here's a concrete usage example of code regions:
+以下为代码区块的具体使用示例：
 
 ::
 
-    # This comment is outside the code region. It will be visible when collapsed.
-    #region Terrain generation
-    # This comment is inside the code region. It won't be visible when collapsed.
+    # 该注释位于代码区域之外。折叠时将可见。
+    #region 地形生成
+    # 该注释位于代码区域内。折叠后将不可见。
     func generate_lakes():
         pass
 
@@ -562,7 +559,7 @@ Here's a concrete usage example of code regions:
         pass
     #endregion
 
-    #region Terrain population
+    #region 地形生成
     func place_vegetation():
         pass
 
@@ -570,32 +567,24 @@ Here's a concrete usage example of code regions:
         pass
     #endregion
 
-This can be useful to organize large chunks of code into easier to understand
-sections. However, remember that external editors generally don't support this
-feature, so make sure your code is easy to follow even when not relying on
-folding code regions.
+代码区块可将大块代码组织成更容易理解的部分，但注意：外部编辑器通常不支持该特性。因此即便不依赖代码区块，也要确保你的代码易于理解。
 
 .. note::
 
-    Individual functions and indented sections (such as ``if`` and ``for``) can
-    *always* be collapsed in the script editor. This means you should avoid
-    using a code region to contain a single function or indented section, as it
-    won't bring much of a benefit. Code regions work best when they're used to
-    group multiple elements together.
+    单独的函数与被缩进的部分（如 ``if`` 和 ``for``） *始终* 可以在脚本编辑器中折叠，此时应避免使用代码区块来包含这些可
+    始终折叠起来的部分，执意使用亦可，但也并不会带来太多好处。若要将多个元素分组在一起，使用代码区块效果最佳。
 
-Line continuation
+行间语句接续
 -----------------
 
-A line of code in GDScript can be continued on the next line by using a backslash
-(``\``). Add one at the end of a line and the code on the next line will act like
-it's where the backslash is. Here is an example:
+在GDScript中，一行语句可通过反斜杠（ ``\`` ）接续到下一行。将反斜杠加在一行语句末尾可将该行代码与下一行代码相衔接。如：
 
 ::
 
     var a = 1 + \
     2
 
-A line can be continued multiple times like this:
+可按以下方式对单个语句行进行多行接续：
 
 ::
 
@@ -606,189 +595,155 @@ A line can be continued multiple times like this:
 
 .. _doc_gdscript_builtin_types:
 
-Built-in types
+内置类型
 --------------
 
-Built-in types are stack-allocated. They are passed as values. This means a copy
-is created on each assignment or when passing them as arguments to functions.
-The exceptions are ``Object``, ``Array``, ``Dictionary``, and packed arrays
-(such as ``PackedByteArray``), which are passed by reference so they are shared.
-All arrays, ``Dictionary``, and some objects (``Node``, ``Resource``)
-have a ``duplicate()`` method that allows you to make a copy.
+内置类型分配在栈上，按值传递，在每次赋值或将其作为参数传递给函数时均会复制其值，例外：对象 ``Object``、``Array``、``Dictionary`` 以及密存数
+组（如 ``PackedByteArray`` ），这些类型的值按引用传递，其实例的值相互共享。数组、字典以及部分对象（``Node``、``Resource``）均有 ``duplicate()`` 方法，允许对其具体值进行复制操作。
 
-Basic built-in types
+基本内置类型
 ~~~~~~~~~~~~~~~~~~~~
 
-A variable in GDScript can be assigned to several built-in types.
+GDScript 中的变量可赋以不同内置类型的值。
 
 null
 ^^^^
 
-``null`` is an empty data type that contains no information and can not
-be assigned any other value.
+``null`` 为空数据类型，既不包含任何信息，也不能赋值为其他任何值。
 
-Only types that inherit from Object can have a ``null`` value
-(Object is therefore called a "nullable" type).
-:ref:`Variant types <doc_variant_class>` must have a valid value at all times,
-and therefore cannot have a ``null`` value.
+只有从 Object 继承的类型才能具有 ``null`` 值（因此，Object 被称为“可空”类型）。 :ref:`变体类型 <doc_variant_class>` 必须始终具有有效值，因此不能具有 ``null`` 值。
 
 :ref:`bool <class_bool>`
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Short for "boolean", it can only contain ``true`` or ``false``.
+“boolean”（布尔）的缩写，只能包含 ``true`` 或 ``false``。
 
 :ref:`int <class_int>`
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Short for "integer", it stores whole numbers (positive and negative).
-It is stored as a 64-bit value, equivalent to ``int64_t`` in C++.
+英文“integer”（整数）的缩写，存储整数（正整数和负整数）。存储的是 64 位值，等效于 C++ 中的 ``int64_t``。
 
 :ref:`float <class_float>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Stores real numbers, including decimals, using floating-point values.
-It is stored as a 64-bit value, equivalent to ``double`` in C++.
-Note: Currently, data structures such as ``Vector2``, ``Vector3``, and
-``PackedFloat32Array`` store 32-bit single-precision ``float`` values.
+使用浮点值存储实数，包括小数。存储的是 64 位值，等效于 C++ 中的 ``double``。注意：目前 ``Vector2`` 、 ``Vector3`` 、 ``PackedFloat32Array`` 等数据结构存储的是 32 位单精度 ``float`` 值。
 
 :ref:`String <class_String>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A sequence of characters in `Unicode format <https://en.wikipedia.org/wiki/Unicode>`_.
+`Unicode 格式 <https://en.wikipedia.org/wiki/Unicode>`_ 的字符序列。
 
 :ref:`StringName <class_StringName>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An immutable string that allows only one instance of each name. They are slower to
-create and may result in waiting for locks when multithreading. In exchange, they're
-very fast to compare, which makes them good candidates for dictionary keys.
+不可变字符串，一个实例仅允许拥有一个名称。该类型的实例创建起来较慢，在多线程环境下可能会导致锁等待。不过，该类型的实例比较起来比字符串快，非常适合在字典中作为键名使用。
 
 :ref:`NodePath <class_NodePath>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A pre-parsed path to a node or a node property.  It can be
-easily assigned to, and from, a String. They are useful to interact with
-the tree to get a node, or affecting properties like with :ref:`Tweens <class_Tween>`.
+节点或节点属性的预解析路径，可以轻松地赋值成字符串，亦或从字符串中转换为节点路径。节点路径可用于与节点树交互以获取节点，亦或通过诸如 :ref:`Tweens <class_Tween>` 等方式来影响属性。
 
-Vector built-in types
+内置向量类型
 ~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`Vector2 <class_Vector2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2D vector type containing ``x`` and ``y`` fields. Can also be
-accessed as an array.
+2D 向量类型，包含 ``x`` 和 ``y`` 两个字段，也可像访问数组元素一样访问这两个字段。
 
 :ref:`Vector2i <class_Vector2i>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Same as a Vector2 but the components are integers. Useful for representing
-items in a 2D grid.
+同 Vector2，但其分量均为整型数值，非常适用于制作2D网格显示物品功能。
 
 :ref:`Rect2 <class_Rect2>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2D Rectangle type containing two vectors fields: ``position`` and ``size``.
-Also contains an ``end`` field which is ``position + size``.
+2D 矩形类型，包含两个向量字段：``position`` 和 ``size`` 。还包含一个 ``end`` 字段，即 ``position + size``。
 
 :ref:`Vector3 <class_Vector3>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3D vector type containing ``x``, ``y`` and ``z`` fields. This can also
-be accessed as an array.
+3D 向量类型，包含 ``x`` 、 ``y`` 和 ``z`` 这三个字段，也可以像访问数组元素一样访问这些字段。
 
 :ref:`Vector3i <class_Vector3i>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Same as Vector3 but the components are integers. Can be use for indexing items
-in a 3D grid.
+同 Vector3 ，但其分量均为整型数值，可用于为 3D 网格中的每个物品编制索引。
 
 :ref:`Transform2D <class_Transform2D>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3×2 matrix used for 2D transforms.
+用于 2D 线性变换的3x2矩阵。
 
 :ref:`Plane <class_Plane>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3D Plane type in normalized form that contains a ``normal`` vector field
-and a ``d`` scalar distance.
+3D 平面类型的标准形式，包含一个向量字段 ``normal`` 以及一个 标量距离 ``d`` 。
 
 :ref:`Quaternion <class_Quaternion>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quaternion is a datatype used for representing a 3D rotation. It's
-useful for interpolating rotations.
+四元数是一种用于表示 3D 旋转的数据类型，对于内插旋转十分有用。
 
 :ref:`AABB <class_AABB>`
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Axis-aligned bounding box (or 3D box) contains 2 vectors fields: ``position``
-and ``size``. Also contains an ``end`` field which is
-``position + size``.
+轴对齐边界框（或 3D 边框），包含两个向量字段: ``position`` 和 ``size``。 还包含一个 ``end`` 字段, 即 ``position + size``。
 
 :ref:`Basis <class_Basis>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3x3 matrix used for 3D rotation and scale. It contains 3 vector fields
-(``x``, ``y`` and ``z``) and can also be accessed as an array of 3D
-vectors.
+3×3矩阵，用于 3D 旋转与缩放。其包含3个向量字段（ ``x`` , ``y`` 和 ``z`` ），且可以像3D向量一样按索引访问这些向量字段。
 
 :ref:`Transform3D <class_Transform3D>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3D Transform contains a Basis field ``basis`` and a Vector3 field
-``origin``.
+3D 线性变换，包含一个 ``Basis``（基）字段 ``basis`` 和一个 ``Vector3`` 字段 ``origin``。
 
-Engine built-in types
+引擎内置类型
 ~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`Color <class_Color>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Color data type contains ``r``, ``g``, ``b``, and ``a`` fields. It can
-also be accessed as ``h``, ``s``, and ``v`` for hue/saturation/value.
+颜色数据类型包含 ``r`` 、 ``g`` 、 ``b`` 、 ``a`` 四个字段，也可以用 ``h`` 、 ``s`` 、 ``v`` 这三个字段来分别访问色相、饱和度、明度。
 
 :ref:`RID <class_RID>`
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Resource ID (RID). Servers use generic RIDs to reference opaque data.
+资源ID（RID）。服务使用通用的 RID 来引用不透明数据。
 
 :ref:`Object <class_Object>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Base class for anything that is not a built-in type.
+所有非内置类型的基类型。
 
-Container built-in types
+容器内置类型
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 :ref:`Array <class_Array>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generic sequence of arbitrary object types, including other arrays or dictionaries (see below).
-The array can resize dynamically. Arrays are indexed starting from index ``0``.
-Negative indices count from the end.
+任意对象类型的泛型序列，包括其他数组或字典（见下文）。数组可以动态调整大小，其索引从 ``0`` 开始，索引为负整数时则表示从数组尾部开始计数。
 
 ::
 
     var arr = []
     arr = [1, 2, 3]
-    var b = arr[1] # This is 2.
-    var c = arr[arr.size() - 1] # This is 3.
-    var d = arr[-1] # Same as the previous line, but shorter.
-    arr[0] = "Hi!" # Replacing value 1 with "Hi!".
-    arr.append(4) # Array is now ["Hi!", 2, 3, 4].
+    var b = arr[1] # 这是2
+    var c = arr[arr.size() - 1] # 这是3
+    var d = arr[-1] # 与上一行相同，但更短
+    arr[0] = "Hi!" # 与上一行相同，但更短
+    arr.append(4) # 数组现在是["Hi!", 2, 3, 4].
 
-Typed arrays
+类型化数组
 ^^^^^^^^^^^^
 
-Godot 4.0 added support for typed arrays. On write operations, Godot checks that
-element values match the specified type, so the array cannot contain invalid values.
-The GDScript static analyzer takes typed arrays into account, however array methods like
-``front()`` and ``back()`` still have the ``Variant`` return type.
+向类型化数组中写入数据时，Godot 会检查每个元素是否与该数组所指定的类型相匹配，因此类型化数
+组不能含有无效数据。而诸如 ``front()`` 和 ``back()`` 等方法，虽然 GDScript 静态分析器会将类型化数组考虑在内，却仍会返回 ``Variant`` 类型的数值。
 
-Typed arrays have the syntax ``Array[Type]``, where ``Type`` can be any ``Variant`` type,
-native or user class, or enum. Nested array types (like ``Array[Array[int]]``) are not supported.
+类型化数组通过 ``Array[Type]`` 指定，其中类型 ``Type`` 可以是 ``Variant`` 类型、内置类型，也可以是用户自定义类型、枚举类型等。不支持类型化数组嵌套（如 ``Array[Array[int]]`` ）。
 
 ::
 
@@ -798,32 +753,29 @@ native or user class, or enum. Nested array types (like ``Array[Array[int]]``) a
     var d: Array[MyEnum]
     var e: Array[Variant]
 
-``Array`` and ``Array[Variant]`` are the same thing.
+``Array`` 等价于 ``Array[Varaint]``
 
 .. note::
 
-    Arrays are passed by reference, so the array element type is also an attribute of the in-memory
-    structure referenced by a variable in runtime. The static type of a variable restricts the structures
-    that it can reference to. Therefore, you **cannot** assign an array with a different element type,
-    even if the type is a subtype of the required type.
+    数组是按引用传递的，因此数组元素类型也是运行时变量引用的内存结构的一个属性。变量的静态类型限制了它可以引用的结构。因此，你 **不能** 为数组内的元素赋予不同的元素类型的值，即使该类型是数组所接受类型的子类型。
 
     If you want to *convert* a typed array, you can create a new array and use the
-    :ref:`Array.assign() <class_Array_method_assign>` method::
+    
+    若需要对类型化数组进行 **转型** ，可以创建一个新数组，并使用 :ref:`Array.assign() <class_Array_method_assign>` 方法::
 
         var a: Array[Node2D] = [Node2D.new()]
 
-        # (OK) You can add the value to the array because `Node2D` extends `Node`.
+        # （正确）你可以将值添加到数组中，因为“Node2D”扩展了“Node”。
         var b: Array[Node] = [a[0]]
 
-        # (Error) You cannot assign an `Array[Node2D]` to an `Array[Node]` variable.
+        # (错误) 你不能将“Array[Node2D]”分配给“Array[Node]”变量。
         b = a
 
-        # (OK) But you can use the `assign()` method instead. Unlike the `=` operator,
-        # the `assign()` method copies the contents of the array, not the reference.
+        # (正确) 但您可以使用“assign()”方法来代替。与“=”运算符不同，
+        # “assign()” 方法复制数组的内容，而不是引用。
         b.assign(a)
 
-    The only exception was made for the ``Array`` (``Array[Variant]``) type, for user convenience
-    and compatibility with old code. However, operations on untyped arrays are considered unsafe.
+    ``Array``（``Array[Variant]``）则是例外，这样做可以保证用户使用的便捷性与与旧版本代码的兼容性。不过，非类型化的数组是不安全的。
 
 Packed arrays
 ^^^^^^^^^^^^^
