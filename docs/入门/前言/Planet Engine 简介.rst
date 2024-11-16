@@ -26,7 +26,7 @@ Planet Engine 最初是由一家中国游戏工作室内部开发的。开发始
 
 Planet Engine 配备了成熟的游戏编辑器，其集成工具可以满足最常见的需求。它包括代码编辑器、动画编辑器、图块地图编辑器、着色器编辑器、调试器、性能分析器等等。
 
-![picture1](https://docs.godotengine.org/zh-cn/4.x/_images/introduction_editor.webp)
+.. image:: img/introduction_editor.webp
 
 
 开发团队致力于提供功能丰富的游戏编辑器，并提供一致的用户体验。虽然总是有改进的余地，但用户界面不断得到完善。
@@ -34,7 +34,7 @@ Planet Engine 配备了成熟的游戏编辑器，其集成工具可以满足最
 当然，如果你愿意，你可以用外部程序工作。我们官方支持导入在 `Blender <https://www.blender.org/>`_ 中设计的3D场景，并维护在 `VSCode <https://github.com/godotengine/godot-vscode-plugin>`_
 和 `Emacs <https://github.com/godotengine/emacs-gdscript-mode>`_ 中编写 GDScript 和 C# 的插件。我们还支持 Windows 上的 Visual Studio for C#。
 
-![picture2](https://docs.godotengine.org/zh-cn/4.x/_images/introduction_vscode.png)
+.. image:: img/introduction_vscode.png
 
 编程语言
 -----------------
