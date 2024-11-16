@@ -15,7 +15,7 @@
    :name: sec-rumen
 
    入门/Planet Engine 简介
-   入门/学习用GDscript编程
+   入门/学习用 GDscript 编程
    入门/Planet Engine 关键概念概述
    入门/初识 Planet Engine 编辑器
    入门/学习新特性
