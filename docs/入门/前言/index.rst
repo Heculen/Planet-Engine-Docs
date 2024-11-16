@@ -7,7 +7,6 @@
 
 .. toctree::
   :maxdepth: 1
-  :hidden:
   :name: qianyan
 
   Planet Engine 简介
