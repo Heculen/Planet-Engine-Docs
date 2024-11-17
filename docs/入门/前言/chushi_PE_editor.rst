@@ -29,7 +29,7 @@
 
 在这里使用下拉菜单来选择你的语言。默认情况下，其以英文显示。
 
-.. image:: image/editor_intro_language.webp
+.. image:: img/editor_intro_language.webp
 
 初识 Transform Enigne 编辑器
 -----------------------------
@@ -91,7 +91,7 @@
 
 请注意工具栏下方的“透视”按钮。点击后会打开 3D 视图相关的选项列表。
 
-.. image:: img/editor_intro_3d_viewport_perspective.webp
+.. image:: img/editor_intro_3d_viewport_perspective.webp.png
 
 .. note::
   更多关于3D 主屏幕的细节请查看 `3D 简介 <www.bilibili.com>`_ 。
