@@ -11,7 +11,7 @@
 
 启动 Planet Enigne 后，你会首先看到项目管理器窗口。在默认的选项卡“本地项目”中，你可以进行对已有项目进行管理、导入或者创建新项目等操作。
 
-![sf](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_project_manager.webp)
+.. image:: img/editor_intro_project_manager.webp
 
 在窗口顶部，有另一个名为“资源库项目”的页签。当你第一次进入该页签时，会有一个“上线”按钮。出于隐私原因，Transform Enigne项目管理器默认不会访问网络。若要更改此设置，请点击“上线”按钮。如果你想
 修改将网络模式改回“离线”，可以在 `项目管理器 <www.bilibli.com>`_ 中进行设置。
@@ -21,48 +21,48 @@
 .. note::
   要进一步了解项目管理器，请阅读 `使用项目管理器 <www.bilibil.com>`_ 。
 
-![t](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_project_templates.webp)
+.. image:: img/editor_intro_project_templates.webp
 
 你也可以在设置菜单里更改编辑器的语言。
 
-![oo](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_settings.webp)
+.. image:: img/editor_intro_settings.webp
 
 在这里使用下拉菜单来选择你的语言。默认情况下，其以英文显示。
 
-![sfsdg](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_language.webp)
+.. image:: image/editor_intro_language.webp
 
 初识 Transform Enigne 编辑器
 -----------------------------
 
 打开新建项目或者已有项目，就会出现编辑器界面。我们来看看它的主要区域。
 
-![editor](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_editor_empty.webp)
+.. image:: img/editor_intro_editor_empty.webp
 
 默认情况下，窗口顶部分布着 **菜单**、**主屏幕**、游玩测试按钮。
 
-![sdfs](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_top_menus.webp)
+.. image:: img/editor_intro_top_menus.webp
 
 中央是 **视口** 及其顶部 **工具栏** ，可以在工具栏上找到用来移动、缩放、锁定场景中节点的工具。
 
-![ppp](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_3d_viewport.webp)
+.. image:: img/editor_intro_3d_viewport.webp
 
 视口的两边是 **停靠面板** 。窗口底部则是 **底部面板** 。
 
 工具栏会随着上下文和所选节点改变。这里展示的是 2D 工具栏。
 
-![2d](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_toolbar_2d.webp)
+.. image:: img/editor_intro_toolbar_2d.webp
 
 下面这个是 3D 的。
 
-![ll](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_toolbar_3d.webp)
+.. image:: img/editor_intro_toolbar_3d.webp
 
 我们来看看停靠面板。 **文件系统** 面板会列出项目中的文件，包括脚本、图片、音频采样等。
 
-![ui](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_filesystem_dock.webp)
+.. image:: img/editor_intro_filesystem_dock.webp
 
 **场景** 面板会列出活动场景中的节点。
 
-![qq](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_scene_dock.webp)
+.. image:: img/editor_intro_scene_dock.webp
 
 你可以在 **检查器** 中编辑所选节点的属性。
 
