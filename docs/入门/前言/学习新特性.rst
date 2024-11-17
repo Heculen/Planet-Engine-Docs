@@ -60,7 +60,7 @@ Planet Engine 是一个功能丰富的游戏引擎。有很多东西可以学习
 截图， `更多信息请参见此处 <https://support.apple.com/guide/mac-help/take-a-screenshot-mh26782/mac>`_ 。或者，您可以使
 用 Windows 上的 `ShareX <https://getsharex.com/) 或 Linux 上的 [FlameShot](https://flameshot.org/>`_ 等程序。
 
-分享你的游戏录像对发现游戏中的问题同样是很有用的。你可以使用 [OBS](https://obsproject.com/) 或者 [Screen to GIF](https://www.screentogif.com/) 来捕获你的屏幕。
+分享你的游戏录像对发现游戏中的问题同样是很有用的。你可以使用 `OBS <https://obsproject.com/>`_ 或者 `Screen to GIF <https://www.screentogif.com/>`_ 来捕获你的屏幕。
 
 然后你可以使用像 `streamable <https://streamable.com/>`_ 或云服务提供商的服务，免费上传和分享你的视频。
 
