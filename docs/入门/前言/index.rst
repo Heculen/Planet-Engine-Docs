@@ -9,7 +9,7 @@
   :maxdepth: 1
 
   Planet Engine 简介
-  学习用 GDScript 编程
+  学习用GDScript编程
   初识 Planet Engine 编辑器
   Planet Engine 关键概念概述
   学习新特性
