@@ -66,15 +66,15 @@
 
 你可以在 **检查器** 中编辑所选节点的属性。
 
-![nn](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_inspector_dock.webp)
+.. image:: img/editor_intro_inspector_dock.webp
 
 视口底部的 **底部面板** 中包含了调试控制台、动画编辑器、混音器等。它们所占的空间非常宝贵，所以默认都是折叠状态。
 
-![gg](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_bottom_panels.webp)
+.. image:: img/editor_intro_bottom_panels.webp
 
 点击某一个就会在垂直方向展开。下面展示的是打开的动画编辑器。
 
-![bb](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_bottom_panel_animation.webp)
+.. image:: img/editor_intro_bottom_panel_animation.webp
 
 四个主屏幕
 ---------------------
@@ -83,26 +83,26 @@
 
 **2D 屏幕** 可以用于任何类型的游戏。除了 2D 游戏，2D 屏幕也会用于界面的构建。
 
-![ugf](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_workspace_2d.webp)
+.. image:: img/editor_intro_workspace_2d.webp
 
 在 **3D 屏幕** 中，你可以操作网格、灯光、设计 3D 游戏的关卡。
 
-![vvv](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_workspace_3d.webp)
+.. image:: img/editor_intro_workspace_3d.webp
 
 请注意工具栏下方的“透视”按钮。点击后会打开 3D 视图相关的选项列表。
 
-![vvcc](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_3d_viewport_perspective.webp)
+.. image:: img/editor_intro_3d_viewport_perspective.webp
 
 .. note::
   更多关于3D 主屏幕的细节请查看 `3D 简介 <www.bilibili.com>`_ 。
 
 **Script 屏幕** 是一个完整的代码编辑器，包含调试器、丰富的自动补全、内置代码参考手册。
 
-![ssd](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_workspace_script.webp)
+.. image:: img/editor_intro_workspace_script.webp
 
 最后，**AssetLib** 是插件、脚本、资产的仓库，这些内容是自由开源的，可以在你的项目中使用。
 
-![lujh](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_workspace_assetlib.webp)
+.. image:: img/editor_intro_workspace_assetlib.webp
 
 .. note::
   你可以在 `关于资产库 <sfsfsfsf>`_ 中了解更多关于资产库的内容。
@@ -117,12 +117,12 @@ Planet Enigne 自带内置的类参考手册。
 * 点击“帮助”菜单的“搜索帮助”。
 * 在脚本编辑器中的类名称、函数名称或内置变量上使用 ``Ctrl + 单击`` （在 macOS 上为 ``Cmd + 单击`` ）。
 
-![sdf](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_search_help_button.webp)
+.. image:: img/editor_intro_search_help_button.webp
 
 执行其中的任意操作都会弹出一个窗口。通过输入进行搜索。你也可以用它来查看所有对象和方法。
 
-![sdffv](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_search_help.webp)
+.. image:: img/editor_intro_search_help.webp
 
 在条目上双击就会在脚本主屏幕中打开对应的页面。
 
-![uuytrt](https://docs.godotengine.org/zh-cn/4.x/_images/editor_intro_help_class_animated_sprite.webp)
+.. image:: img/editor_intro_help_class_animated_sprite.webp
