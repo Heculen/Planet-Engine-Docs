@@ -10,6 +10,6 @@
 
   Planet Engine 简介
   learn_to_code_with_GDscript
-  初识 Planet Engine 编辑器
+  chushi_Planet_Engine_editor
   Planet_Engine_gjgngs
   学习新特性
