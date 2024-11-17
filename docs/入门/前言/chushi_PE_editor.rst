@@ -29,7 +29,7 @@
 
 在这里使用下拉菜单来选择你的语言。默认情况下，其以英文显示。
 
-.. image:: img/editor_intro_language.webp
+.. image:: img/editor_intro_language.webp.png
 
 初识 Transform Enigne 编辑器
 -----------------------------
