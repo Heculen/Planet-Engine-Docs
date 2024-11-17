@@ -7,10 +7,9 @@
 
 .. toctree::
   :maxdepth: 1
-  :name: qianyan
 
   Planet Engine 简介
   学习用 GDScript 编程
-  Planet Engine 关键概念概述
   初识 Planet Engine 编辑器
+  Planet Engine 关键概念概述
   学习新特性
