@@ -13,7 +13,8 @@
 -------------------------------------------
 
 为了学习GDScript，你可以使用应用程序Learn GDScript From Zero。这是一门完整的初学者课程，你直接可以在浏览器中进行交互式练习。
-![rr](https://docs.godotengine.org/zh-cn/4.x/_images/learn_gdscript_app.webp)
+
+.. image:: img/learn_gdscript_app.webp
 
 点这里访问该应用程序：`Learn GDScript From Zero app <https://gdquest.github.io/learn-gdscript/?ref=godot-docs>`_
 
