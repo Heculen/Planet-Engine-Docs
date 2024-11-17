@@ -777,31 +777,27 @@ null
 
     ``Array``（``Array[Variant]``）则是例外，这样做可以保证用户使用的便捷性与与旧版本代码的兼容性。不过，非类型化的数组是不安全的。
 
-Packed arrays
+压缩数组
 ^^^^^^^^^^^^^
 
-GDScript arrays are allocated linearly in memory for speed.
-Large arrays (more than tens of thousands of elements) may however cause
-memory fragmentation. If this is a concern, special types of
-arrays are available. These only accept a single data type. They avoid memory
-fragmentation and use less memory, but are atomic and tend to run slower than generic
-arrays. They are therefore only recommended to use for large data sets:
+GDScript 数组在内存中通过线性分配以提高运行速度，但在使用大型数组（包含数万个元素）时可能会导致内存碎片。如果在意这个问题，可以使用特定类型的压缩数组，这些数组只接受单个
+数据类型，避免了内存碎片的同时使用的内存也更少。然而这些压缩数组是原子数组，运行起来通常要比通用数组慢，因此建议仅将压缩数组用于大型数据集当中:
 
-- :ref:`PackedByteArray <class_PackedByteArray>`: An array of bytes (integers from 0 to 255).
-- :ref:`PackedInt32Array <class_PackedInt32Array>`: An array of 32-bit integers.
-- :ref:`PackedInt64Array <class_PackedInt64Array>`: An array of 64-bit integers.
-- :ref:`PackedFloat32Array <class_PackedFloat32Array>`: An array of 32-bit floats.
-- :ref:`PackedFloat64Array <class_PackedFloat64Array>`: An array of 64-bit floats.
-- :ref:`PackedStringArray <class_PackedStringArray>`: An array of strings.
-- :ref:`PackedVector2Array <class_PackedVector2Array>`: An array of :ref:`Vector2 <class_Vector2>` values.
-- :ref:`PackedVector3Array <class_PackedVector3Array>`: An array of :ref:`Vector3 <class_Vector3>` values.
-- :ref:`PackedVector4Array <class_PackedVector4Array>`: An array of :ref:`Vector4 <class_Vector4>` values.
-- :ref:`PackedColorArray <class_PackedColorArray>`: An array of :ref:`Color <class_Color>` values.
+- :ref:`PackedByteArray <class_PackedByteArray>`: 字节（从 0 到 255 的整数）数组。
+- :ref:`PackedInt32Array <class_PackedInt32Array>`: 32位整数数组。
+- :ref:`PackedInt64Array <class_PackedInt64Array>`: 64位整数数组。
+- :ref:`PackedFloat32Array <class_PackedFloat32Array>`: 32位浮点数数组。
+- :ref:`PackedFloat64Array <class_PackedFloat64Array>`: 64位浮点数数组。
+- :ref:`PackedStringArray <class_PackedStringArray>`: 字符串数组。
+- :ref:`PackedVector2Array <class_PackedVector2Array>`: :ref:`Vector2 <class_Vector2>` 类型的数组。
+- :ref:`PackedVector3Array <class_PackedVector3Array>`: :ref:`Vector3 <class_Vector3>` 类型的数组。
+- :ref:`PackedVector4Array <class_PackedVector4Array>`: :ref:`Vector4 <class_Vector4>` 类型的数组。
+- :ref:`PackedColorArray <class_PackedColorArray>`: :ref:`Color <class_Color>` 类型的数组。
 
-:ref:`Dictionary <class_Dictionary>`
+:ref:`Dictionary（字典） <class_Dictionary>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Associative container which contains values referenced by unique keys.
+关联容器，其内部数值通过与之对应的唯一的键进行引用。
 
 ::
 
@@ -814,10 +810,8 @@ Associative container which contains values referenced by unique keys.
         "more_key": "Hello"
     }
 
-Lua-style table syntax is also supported. Lua-style uses ``=`` instead of ``:``
-and doesn't use quotes to mark string keys (making for slightly less to write).
-However, keys written in this form can't start with a digit (like any GDScript
-identifier), and must be string literals.
+字典也支持 Lua 风格的 table 语法。Lua 风格的 GDScript 字典语法在标记字符串键时，使用的是 ``=`` 而非 ``:`` ，且不使用引号（这样要写的东西会稍微少一些）。但请注意，以这种形式
+编写的键和 GDScript 标识符一样不能以数字开头，且必须为字面量。
 
 ::
 
@@ -828,68 +822,54 @@ identifier), and must be string literals.
         more_key = "Hello"
     }
 
-To add a key to an existing dictionary, access it like an existing key and
-assign to it::
+若要向现有字典添加键，可以像访问现有键一样访问要添加的键，并给其赋值::
 
-    var d = {} # Create an empty Dictionary.
-    d.waiting = 14 # Add String "waiting" as a key and assign the value 14 to it.
-    d[4] = "hello" # Add integer 4 as a key and assign the String "hello" as its value.
-    d["Godot"] = 3.01 # Add String "Godot" as a key and assign the value 3.01 to it.
-
+    var d = {} # 创建一个空字典。
+    d.waiting = 14 # 添加字符串“waiting”作为键并为其分配值 14。
+    d[4] = "hello" # 添加整数 4 作为键，并将字符串“hello”指定为其值。
+    d["Godot"] = 4.3 # 添加字符串“Godot”作为键并为其分配值 4.3。
     var test = 4
-    # Prints "hello" by indexing the dictionary with a dynamic key.
-    # This is not the same as `d.test`. The bracket syntax equivalent to
-    # `d.test` is `d["test"]`.
+    # 通过使用动态键索引字典来打印“hello”。
+    # 这与“d.test”不同。括号语法相当于
+    # `d.test` 就是 `d["test"]`.
     print(d[test])
 
 .. note::
 
-    The bracket syntax can be used to access properties of any
-    :ref:`class_Object`, not just Dictionaries. Keep in mind it will cause a
-    script error when attempting to index a non-existing property. To avoid
-    this, use the :ref:`Object.get() <class_Object_method_get>` and
-    :ref:`Object.set() <class_Object_method_set>` methods instead.
+    方括号语法不仅可以用在 Dictionary 上，而且还可以用来存取任何 :ref:`class_Object` 的属性。不过要注意：尝试读
+    取不存在的属性会引发脚本错误。要避免这一点，可换用 :ref:`Object.get() <class_Object_method_get>` 和 :ref:`Object.set() <class_Object_method_set>` 方法。
 
-:ref:`Signal <class_Signal>`
+:ref:`Signal（信号） <class_Signal>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A signal is a message that can be emitted by an object to those who want to
-listen to it. The Signal type can be used for passing the emitter around.
+信号由对象发出，并由对象所监听。 Signal 类型可以用于将信号广播者作为参数进行传递。
 
-Signals are better used by getting them from actual objects, e.g. ``$Button.button_up``.
+信号可以直接从对象实例中进行引用，如 ``$Button.button_up`` 。
 
 :ref:`Callable <class_Callable>`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Contains an object and a function, which is useful for passing functions as
-values (e.g. when connecting to signals).
+可调用体包含一个对象及其某个函数，适用于将函数作为数值传递（例如：将可调用体用于信号连接）。
 
-Getting a method as a member returns a callable. ``var x = $Sprite2D.rotate``
-will set the value of ``x`` to a callable with ``$Sprite2D`` as the object and
-``rotate`` as the method.
+像引用成员属性那样引用一个方法的签名会返回可调用体。 如 ``var x = $Sprite2D.rotate`` 会将变量 ``x`` 赋值为一个可调用体，该可调用体含有对 ``$Sprite2D`` 对象的方法 ``rotate()`` 的引用。
 
-You can call it using the ``call`` method: ``x.call(PI)``.
+可以调用 ``call`` 方法来调用可调体所指向的方法，如： ``x.call(PI)`` 。
 
-Variables
+变量
 ---------
 
-Variables can exist as class members or local to functions. They are
-created with the ``var`` keyword and may, optionally, be assigned a
-value upon initialization.
+变量可以作为类成员存在，也可以作为函数的局部变量存在，用 ``var`` 关键字创建，可以在初始化时指定一个值。
 
 ::
 
-    var a # Data type is 'null' by default.
+    var a # 默认情况下，数据类型为“null”。
     var b = 5
     var c = 3.8
     var d = b + c # Variables are always initialized in direct order (see below).
 
-Variables can optionally have a type specification. When a type is specified,
-the variable will be forced to have always that same type, and trying to assign
-an incompatible value will raise an error.
+变量可进行类型指定。指定类型时，将强制该变量始终容纳与被指定类型相同类型的数据。试图分配与该类型不兼容的值将触发报错。
 
-Types are specified in the variable declaration using a ``:`` (colon) symbol
-after the variable name, followed by the type.
+在变量声明中，在变量名后面使用 ``:`` + ``类型名`` 来指定类型。
 
 ::
 
