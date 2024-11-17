@@ -50,7 +50,7 @@ Planet Engine 提供了丰富的基础节点类型库，你可以通过组合和
 .. image:: img/key_concepts_signals.webp
 
 .. note::
-  信号是 Transform Engine 版的观察者模式。你可以在这里查看更多相关内容：https://gameprogrammingpatterns.com/observer.html
+  信号是 Planet Engine 版的观察者模式。你可以在这里查看更多相关内容：https://gameprogrammingpatterns.com/observer.html
 
 例如，按钮在按下时会发出信号。你可以连接到此信号以运行代码以响应此事件，例如启动游戏或打开菜单。
 
