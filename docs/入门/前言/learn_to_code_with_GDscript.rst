@@ -1,4 +1,4 @@
-学习用GDScript编程
+学习用 GDScript 编程
 ============================
 
 在 Planet Enigne 中，你可以使用GDScript和C#编程语言来写代码。
