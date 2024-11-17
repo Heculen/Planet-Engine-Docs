@@ -11,18 +11,18 @@ Planet Engine 关键概念概述
 在 Planet Engine 中，你把你的游戏分解成可重复使用的场景。场景可以是一个角色、一件武器、用户界面中的一个菜单、一座房子、整个关卡，或者任何你能想到的东西。Planet Engine 的场
 景很灵活，既能够充当预制件（Prefab），又能够用作其他游戏引擎中的场景。
 
-![ss](https://docs.godotengine.org/zh-cn/4.x/_images/key_concepts_main_menu.webp)
+.. image:: img/key_concepts_main_menu.webp
 
 你还可以嵌套场景。例如，你可以把你的角色放在关卡中，然后拖放一个场景作为它的子级。
 
-![uu](https://docs.godotengine.org/zh-cn/4.x/_images/key_concepts_scene_example.webp)
+.. image:: img/key_concepts_scene_example.webp
 
 节点
 -------------------------------
 
 场景由若干节点组成。节点是你的游戏最小的构件，你将其排列成树状。下面是一个人物节点的例子。
 
-![oo](https://docs.godotengine.org/zh-cn/4.x/_images/key_concepts_character_nodes.webp)
+.. image:: img/key_concepts_character_nodes.webp
 
 它由名为“Player”的 CharacterBody2D 节点、Camera2D、Sprite2D、CollisionShape2D 组成。
 
@@ -33,21 +33,21 @@ Planet Engine 关键概念概述
 
 Planet Engine 提供了丰富的基础节点类型库，你可以通过组合和扩展来建立更强大的节点。无论是 2D、3D 还是用户界面，你都可以用这些节点完成大多数事情。
 
-![yy](https://docs.godotengine.org/zh-cn/4.x/_images/key_concepts_node_menu.webp)
+.. image:: img/key_concepts_node_menu.webp
 
 场景树
 -----------
 
 游戏的所有场景都汇集在场景树中，字面意思是一棵场景树。由于场景是节点树，因此场景树也是节点树。但是，从场景的角度来考虑你的游戏更容易，因为它们可以代表角色、武器、门或你的用户界面。
 
-![bb](https://docs.godotengine.org/zh-cn/4.x/_images/key_concepts_scene_tree.webp)
+.. image:: img/key_concepts_scene_tree.webp
 
 信号
 ------------------
 
 节点在发生某些事件时发出信号。此功能无需在代码中硬连接它们就能让节点相互通信。它为你提供了构建场景的灵活性。
 
-![ll](https://docs.godotengine.org/zh-cn/4.x/_images/key_concepts_signals.webp)
+.. image:: img/key_concepts_signals.webp
 
 .. note::
   信号是 Transform Engine 版的观察者模式。你可以在这里查看更多相关内容：https://gameprogrammingpatterns.com/observer.html
