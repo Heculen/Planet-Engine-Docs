@@ -10,7 +10,7 @@ Planet Engine 是一个功能丰富的游戏引擎。有很多东西可以学习
 
 .. image:: img/manual_search.png
 
-本手册附有类的参考部分，解释每个 Godot 类的可用功能和属性。手册部分涵盖了常用的
+本手册附有类的参考部分，解释每个 Planet Engine 类的可用功能和属性。手册部分涵盖了常用的
 功能、概念以及如何使用编辑器等内容，参考部分主要介绍如何使用 Planet Engine 的脚本API（应用程序编程接口），可以在线和离线访问，建议在 Planet Engine 编辑器中通过帮助 -> 搜索或按 ``F1`` 离线浏览。
 
 .. image:: img/manual_class_reference_search.webp
