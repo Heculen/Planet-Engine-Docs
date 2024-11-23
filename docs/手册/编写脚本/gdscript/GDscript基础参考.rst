@@ -865,7 +865,7 @@ GDScript 数组在内存中通过线性分配以提高运行速度，但在使�
     var a # 默认情况下，数据类型为“null”。
     var b = 5
     var c = 3.8
-    var d = b + c # Variables are always initialized in direct order (see below).
+    var d = b + c # 变量总是按直接顺序初始化（见下文）。
 
 变量可进行类型指定。指定类型时，将强制该变量始终容纳与被指定类型相同类型的数据。试图分配与该类型不兼容的值将触发报错。
 
@@ -876,52 +876,41 @@ GDScript 数组在内存中通过线性分配以提高运行速度，但在使�
     var my_vector2: Vector2
     var my_node: Node = Sprite2D.new()
 
-If the variable is initialized within the declaration, the type can be inferred, so
-it's possible to omit the type name::
+如果在声明中初始化变量，则可以推断变量类型，在此情况下可省略类型名称::
 
-    var my_vector2 := Vector2() # 'my_vector2' is of type 'Vector2'.
-    var my_node := Sprite2D.new() # 'my_node' is of type 'Sprite2D'.
+    var my_vector2 := Vector2() # “my_vector2”的类型为“Vector2”。
+    var my_node := Sprite2D.new() # “my_node”的类型为“Sprite2D”。
 
-Type inference is only possible if the assigned value has a defined type, otherwise
-it will raise an error.
+类型推断只有在指定的值具有定义的类型时才能通过检查，否则将触发报错。
 
-Valid types are:
+有效的类型有：
 
-- Built-in types (Array, Vector2, int, String, etc.).
-- Engine classes (Node, Resource, Reference, etc.).
-- Constant names if they contain a script resource (``MyScript`` if you declared ``const MyScript = preload("res://my_script.gd")``).
-- Other classes in the same script, respecting scope (``InnerClass.NestedClass`` if you declared ``class NestedClass`` inside the ``class InnerClass`` in the same scope).
-- Script classes declared with the ``class_name`` keyword.
-- Autoloads registered as singletons.
+- 内置类型（如 Array 、 Vector2、 int、 String 等）。
+- 引擎自带类型（如 Node 、 Resource 、 Reference 等）。
+- 包含脚本资源的常量名（如 ``MyScript`` ，前提是声明了 ``const MyScript = preload("res://my_script.gd")`` ）。
+- 在同一个脚本中的其他内部类，此时需要注意作用域（比如：在相同作用域内，在 ``class InnerClass`` 中声明 ``class NestedClass`` 则会得到 ``InnerClass.NestedClass`` ）。
+- 通过 ``class_name`` 关键字声明的脚本类。
+- 自动加载的节点——单例节点。
 
 .. note::
 
-    While ``Variant`` is a valid type specification, it's not an actual type. It
-    only means there's no set type and is equivalent to not having a static type
-    at all. Therefore, inference is not allowed by default for ``Variant``,
-    since it's likely a mistake.
+    虽然 ``Variant`` 类型被引擎视作有效类型，但其并不是一个确切的类型，只是一个“没有固定类型”的代名词。使用 ``Variant`` 类型很有可能会导致报错，因此引擎默认不会对该类型进行推断。
+    你可以在项目设置中将该检查关闭，或将其设为警告。详见 :ref:`<doc_gdscript_warning_system>` 。
 
-    You can turn off this check, or make it only a warning, by changing it in
-    the project settings. See :ref:`doc_gdscript_warning_system` for details.
-
-Initialization order
+初始化顺序
 ~~~~~~~~~~~~~~~~~~~~
 
-Member variables are initialized in the following order:
+成员变量的初始化顺序如下：
 
-1. Depending on the variable's static type, the variable is either ``null``
-   (untyped variables and objects) or has a default value of the type
-   (``0`` for ``int``, ``false`` for ``bool``, etc.).
-2. The specified values are assigned in the order of the variables in the script,
-   from top to bottom.
+1. 变量根据其静态类型，取值为 ``null`` （无类型变量和对象）或类型的默认值（ ``int`` 为 ``0`` 、 ``bool`` 为 ``false`` 等）。
+2. 指定的值按照脚本中变量的顺序从上到下分配。
 
-   - (Only for ``Node``-derived classes) If the ``@onready`` annotation is applied to a variable,
-     its initialization is deferred to step 5.
+   - （仅适用于 ``Node`` 派生类）如果 ``@onready`` 注释应用于变量，则其初始化将推迟到步骤 5。
 
-3. If defined, the ``_init()`` method is called.
-4. When instantiating scenes and resources, the exported values are assigned.
-5. (Only for ``Node``-derived classes) ``@onready`` variables are initialized.
-6. (Only for ``Node``-derived classes) If defined, the ``_ready()`` method is called.
+3. 所有非 ``@onready`` 成员变量均完成定义时调用 ``_init()`` 方法。
+4. 初始化场景和资源时，赋导出的值。
+5.（仅适用于 ``Node`` 派生类） ``@onready`` 变量被初始化。
+6.（仅适用于 ``Node`` 派生类）如果定义，则调用 ``_ready()`` 方法。
 
 .. warning::
 
