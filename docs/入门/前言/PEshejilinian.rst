@@ -19,95 +19,37 @@ Planet Engine 场景可以是武器、角色、物品、门、关卡、关卡的
 
 和其他几个 3D 引擎的 Prefab（预制体）不同，场景可以通过继承来扩展。你可以创建一个 Magician（魔术师）来扩展你的 Character（角色）。在编辑器中修改 Character 后 Magician 也会更新。这样的设计可以帮你保持项目结构与设计的一致性。
 
-.. image:: img/engine_design_01
+|image0|
 
-Also note that Godot offers many different types of objects called
-nodes, each with a specific purpose. Nodes are part of a tree and always
-inherit from their parents up to the Node class. Although the engine
-does feature some nodes like collision shapes that a parent physics
-body will use, most nodes work independently from one another.
+Planet Engine 还提供了不同类型的对象，称作节点，每种节点都有特定的用途。节点是场景树的一部分，最终继承自 Node 类。尽管引擎提供的碰撞形状等节点确实会被父节点物理实体所使用，但大多数节点都可以独立使用。
 
-In other words, Godot's nodes do not work like components in some
-other game engines.
+换句话说，Planet Engine 的节点并不像其他一些游戏引擎中的组件那样工作。
 
 |image1|
 
-Sprite2D is a Node2D, a CanvasItem and a Node. It has all the properties
-and features of its three parent classes, like transforms or the ability
-to draw custom shapes and render with a custom shader.
+Sprite2D 是一个 Node2D，一个 CanvasItem 和一个节点。它具有其三个父类的所有属性和功能，例如变换或使用自定义着色器绘制自定义形状和渲染的能力。
 
-All-inclusive package
+完善的工具集
 ---------------------
 
-Godot tries to provide its own tools to answer most common
-needs. It has a dedicated scripting workspace, an animation editor, a
-tilemap editor, a shader editor, a debugger, a profiler,
-the ability to hot-reload locally and on remote devices, etc.
+Godot尝试提供自己的工具来满足最常见的需求. 它具有专用的脚本工作区, 动画编辑器, tilemap编辑器, 着色器编辑器, 调试器, 分析器, 能够在本地和远程等设备上热重载的功能。
 
 |image2|
 
-The goal is to offer a full package to create games and a continuous
-user experience. You can still work with external programs as long as
-there is an import plugin available in Godot for it. Or you can create one, like the `Tiled
-Map Importer <https://github.com/vnen/godot-tiled-importer>`__.
+我们的目标是提供一个完整的软件包来创建游戏以及持续的用户体验。只要有对应的导入插件，你就仍然可以使用外部程序进行编辑。或者你可以自己创建一个导入插件，比如 Tiled Map 导入器。
 
-That is also partly why Godot offers its own programming language
-GDScript along with C#. GDScript is designed for the needs
-of game developers and game designers, and is tightly integrated in
-the engine and the editor.
+这也是为什么 Godot 会提供自己的编程语言 GDScript 和 C# 的部分原因。GDScript 是为满足游戏开发人员和游戏设计师的需求而设计的，并且被紧密集成在引擎和编辑器中。
 
-GDScript lets you write code using an indentation-based syntax,
-yet it detects types and offers a static language's quality of auto-completion.
-It is also optimized for gameplay code with built-in types like Vectors and Colors.
+GDScript 让你能够使用基于缩进的语法编写代码，还可以检测类型，提供质量接近静态语言的自动补全。它还针对使用 Vector、Color 等内置类型的游戏代码进行了优化。
 
-Note that with GDExtension, you can write high-performance code using compiled
-languages like C, C++, Rust, D, Haxe, or Swift without recompiling the engine.
+请注意，使用 GDExtension，你可以编写出使用类似 C、C++、Rust、D、Haxe、Swift 这类的编译语言编写的高性能代码，并且无需重新编译引擎。
 
-Note that the 3D workspace doesn't feature as many tools as the 2D workspace.
-You'll need external programs or add-ons to edit terrains, animate complex characters, and so on.
-Godot provides a complete API to extend the editor's functionality using
-game code. See `The Godot editor is a Godot game`_ below.
+请注意，3D 工作区不像 2D 工作区那样有那么多工具。你将需要使用外部的程序或插件来编辑地形，给复杂的角色模型制作动画等。Godot 提供了完整的 API，可以直接使用编
+写游戏的代码来扩展编辑器的功能。参见下面的 Godot 编辑器是一个 Godot 游戏。
 
 |image4|
 
-*A State Machine editor plugin in Godot 2 by kubecz3k. It lets you
-manage states and transitions visually.*
-
-Open source
------------
-
-Godot offers a fully open source codebase under the **MIT license**.
-This means all the technologies that ship with it have to be Free
-(as in freedom) as well.
-For the most part, they're developed from the ground up by contributors.
-
-Anyone can plug in proprietary tools for the needs of their projects —
-they just won't ship with the engine. This may include Google AdMob,
-or FMOD. Any of these can come as
-third-party plugins instead.
-
-On the other hand, an open codebase means you can **learn from and extend
-the engine** to your heart's content. You can also debug games easily,
-as Godot will print errors with a stack trace, even if they come from the engine itself.
-
-.. note::
-
-   This **does not affect the work you do with Godot** in any way: there's
-   no strings attached to the engine or anything you make with it.
-
-Community-driven
-----------------
-
-**Godot is made by its community, for the community, and for all game
-creators out there.** It's the needs of the users and open discussions
-that drive the core updates. New features from the core developers often
-focus on what will benefit the most users first.
-
-That said, although a handful of core developers work on it full-time,
-the project has thousands of contributors at the time of writing. Benevolent
-programmers work on features they may need themselves, so you'll see
-improvements in all corners of the engine at the same time in every
-major release.
+*Godot 2 的状态机编辑器插件，由 kubecz3k 开发。它使你可以直观地管理状态和转换。*
 
 The Godot editor is a Godot game
 --------------------------------
