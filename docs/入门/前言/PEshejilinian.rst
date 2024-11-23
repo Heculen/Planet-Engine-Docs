@@ -51,41 +51,27 @@ GDScript 让你能够使用基于缩进的语法编写代码，还可以检测�
 
 *Godot 2 的状态机编辑器插件，由 kubecz3k 开发。它使你可以直观地管理状态和转换。*
 
-The Godot editor is a Godot game
+Godot 编辑器是 Godot 游戏
 --------------------------------
 
-The Godot editor runs on the game engine. It uses the engine's own UI
-system, it can hot-reload code and scenes when you test your projects,
-or run game code in the editor. This means you can **use the same code**
-and scenes for your games, or **build plugins and extend the editor.**
+Godot 编辑器是使用游戏引擎运行的，使用的是引擎自己的 UI 系统，可以在测试项目时热重载代码和场景，也可以在编辑器中运行游戏代码。这意味着 **相同的代码** 既可以用来构建游戏中的场景，又可以用来 **构建插件对编辑器进行扩展** 。
 
-This leads to a reliable and flexible UI system, as it powers the editor
-itself. With the ``@tool`` annotation, you can run any game code in the editor.
+这带来了非常稳定且灵活的 UI 系统，并且编辑器本身就是由它自身驱动的。使用 ``@tool`` 注解，你就可以在编辑器中运行任何游戏代码。
 
 |image5|
 
-*RPG in a Box is a voxel RPG editor made with Godot 2. It uses Godot's
-UI tools for its node-based programming system and for the rest of the
-interface.*
+*RPG in a Box 是一个用 Godot 2 制作的 RPG 体素编辑器。它使用 Godot 的 UI 工具制作了其基于节点的编程系统和界面的其余部分。*
 
-Put the ``@tool`` annotation at the top of any GDScript file and it will run
-in the editor. This lets you import and export plugins, create plugins
-like custom level editors, or create scripts with the same nodes and API
-you use in your projects.
+将 ``@tool`` 注解放在任何 GDScript 文件的顶部，文件将在编辑器中运行。这样，你就可以导入、导出插件，创建自定义级别编辑器之类的插件，或使用与项目中所使用的相同的节点和 API 来创建脚本。
 
 .. note::
 
-   The editor is fully written in C++ and is statically compiled into the
-   binary. This means you can't import it as a typical project that would have a
-   ``project.godot`` file.
+   编辑器完全使用 C++ 编写并且静态地编译为二进制文件。这意味着你不能像导入一个拥有 ``project.godot`` 文件的普通项目一样导入它。
 
-Separate 2D and 3D engines
+独立的 2D 和 3D 引擎
 --------------------------
 
-Godot offers dedicated 2D and 3D rendering engines. As a result, **the
-base unit for 2D scenes is pixels.** Even though the engines are
-separate, you can render 2D in 3D, 3D in 2D, and overlay 2D sprites and
-interfaces over your 3D world.
+Godot 提供了专门的 2D 和 3D 渲染引擎。因此，2D 场景的基础单位是像素。尽管引擎是独立的，但你还是可以在 3D 中渲染 2D、在 2D 中渲染 3D，也可以在 3D 世界之上覆盖 2D 精灵和界面。
 
 .. |image0| image:: img/engine_design_01.png
 .. |image1| image:: img/engine_design_02.png
