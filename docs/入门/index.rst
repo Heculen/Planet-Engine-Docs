@@ -6,3 +6,4 @@
    :hidden:
 
    前言/index.rst
+   渐进式教程/index.rst
