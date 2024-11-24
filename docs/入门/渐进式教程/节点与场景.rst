@@ -97,49 +97,37 @@
 
 .. image:: img/nodes_and_scenes_09_play_scene_button.webp
 
-A popup invites you to save the scene, which is required to run it.
-Click the Save button in the file browser to save it as ``label.tscn``.
+会有一个弹出框请你保存场景，这是运行这个场景前所必须做的。在文件浏览器中点击保存按钮将它另存为 ``label.tscn`` 。
 
 .. image:: img/nodes_and_scenes_10_save_scene_as.webp
 
-.. note:: The Save Scene As dialog, like other file dialogs in the editor, only
-          allows you to save files inside the project. The ``res://`` path at
-          the top of the window represents the project's root directory and
-          stands for "resource path". For more information about file paths in
-          Godot, see :ref:`doc_filesystem`.
+.. note:: “场景另存为”对话框，和编辑器中的其他文件对话框一样，只允许你将文件保
+          存在项目之中。窗口顶部的 ``res://`` 路径表示项目的根目录，表示“resource path”（资源路径）。Godot 中文件路径的更多信息请参阅 :ref:`doc_filesystem` 。
 
-The application should open in a new window and display the text "Hello World".
+程序会打开一个新窗口，显示“Hello World”字样。
 
 .. image:: img/nodes_and_scenes_11_final_result.webp
 
-Close the window or press :kbd:`F8` (:kbd:`Cmd + .` on macOS) to quit the running scene.
+关闭窗口或按 ``F8`` （在 macOS 上是 ``Cmd + .`` ）就可以退出正在运行的场景。
 
-Setting the main scene
-----------------------
+设置主场景
+------------
 
-To run our test scene, we used the Run Current Scene button. Another button next to it
-allows you to set and run the project's main scene. You can press :kbd:`F5`
-(:kbd:`Cmd + B` on macOS) to do so.
+我们运行测试场景用的是“运行场景”按钮。它旁边的另一个按钮可以用来设置并运行项目的主场景。你也可以按 ``F5`` （macOS 上则是 ``Cmd + B`` ）达到同样的效果。
 
 .. image:: img/nodes_and_scenes_12_play_button.webp
 
-A popup window appears and invites you to select the main scene.
+出现弹出窗口让你选择主场景。
 
 .. image:: img/nodes_and_scenes_13_main_scene_popup.webp
 
-Click the Select button, and in the file dialog that appears, double click on
-``label.tscn``.
+点击“选择”按钮，出现文件对话框，双击 ``label.tscn`` 。
 
 .. image:: img/nodes_and_scenes_14_select_main_scene.webp
 
-The demo should run again. Moving forward, every time you run the project, Godot
-will use this scene as a starting point.
+演示程序又会开始运行。此后，每次你运行项目，Godot 都会使用该场景作为起点。
 
-.. note:: The editor saves the main scene's path in a project.godot file in your
-          project's directory. While you can edit this text file directly to
-          change project settings, you can also use the "Project -> Project
-          Settings" window to do so. For more information, see
-          :ref:`doc_project_settings`.
+.. note:: 编辑器会将主场景的路径保存到项目目录的 project.godot 文件中。你能够通过
+          编辑这个文本文件来修改项目设置，但你也可以使用“项目 -> 项目设置”窗口来达到同样的目的。详细请参阅 项目设置。
 
-In the next part, we will discuss another key concept in games and in Godot:
-creating instances of a scene.
+下一部分中，我们将讨论游戏和 Godot 中的另一个关键概念：创建场景的实例。
