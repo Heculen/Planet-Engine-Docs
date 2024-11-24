@@ -914,9 +914,7 @@ GDScript 数组在内存中通过线性分配以提高运行速度，但在使�
 
 .. warning::
 
-    You can specify a complex expression as a variable initializer, including function calls.
-    Make sure the variables are initialized in the correct order, otherwise your values
-    may be overwritten. For example::
+    复杂表达式也能够作为变量的初始化器，其中也包括函数调用。请确保初始化变量时变量的声明顺序正确，否则对应的值可能会被覆盖。例如::
 
         var a: int = proxy("a", 1)
         var b: int = proxy("b", 2)
@@ -930,37 +928,30 @@ GDScript 数组在内存中通过线性分配以提高运行速度，但在使�
         func _init() -> void:
             print(_data)
 
-    Will print::
+    会在控制台中打印出::
 
         { "a": 1 }
         { "a": 1, "b": 2 }
         {  }
 
-    To fix this, move the ``_data`` variable definition above the ``a`` definition
-    or remove the empty dictionary assignment (``= {}``).
+    解决这个问题只需将 ``_data`` 变量的定义移动到 ``a`` 的定义之前，或者移除空字典的赋值（ ``={}`` ）。
 
-Static variables
+静态变量
 ~~~~~~~~~~~~~~~~
 
-A class member variable can be declared static::
+成员变量可以声明为静态成员变量::
 
     static var a
 
-Static variables belong to the class, not instances. This means that static variables
-share values between multiple instances, unlike regular member variables.
+S静态变量直属于类而非类的实例，即静态变量可以在多个类实例之间共享数据，这一点与一般的成员变量有所区别。
 
-From inside a class, you can access static variables from any function, both static and non-static.
-From outside the class, you can access static variables using the class or an instance
-(the second is not recommended as it is less readable).
+在类内，静态函数和非静态函数都可以访问静态变量。在类外，可以通过使用类名或类的实例来访问静态变量（后者并不推荐，因为可读性较低）。
 
 .. note::
 
-    The ``@export`` and ``@onready`` annotations cannot be applied to a static variable.
-    Local variables cannot be static.
+    ``@export`` 注解和 ``@onready`` 注解不能修饰静态成员变量。局部变量不能声明为静态局部变量。
 
-The following example defines a ``Person`` class with a static variable named ``max_id``.
-We increment the ``max_id`` in the ``_init()`` function. This makes it easy to keep track
-of the number of ``Person`` instances in our game.
+下例中，我们定义了一个 ``Person`` 类，声明了一个静态成员变量 ``max_id`` 。在游戏中，我们可以增加 ``max_id`` 这个静态成员变量来让我们更容易追踪游戏中 ``Person`` 实例的数量。
 
 ::
 
@@ -977,8 +968,7 @@ of the number of ``Person`` instances in our game.
         id = max_id
         name = p_name
 
-In this code, we create two instances of our ``Person`` class and check that the class
-and every instance have the same ``max_id`` value, because the variable is static and accessible to every instance.
+I下面我们创建两个 ``Person`` 类的实例，会发现类和实例具有相同的 ``max_id`` 值，这是因为该成员变量是静态成员变量，能够在每个实例中访问。
 
 ::
 
@@ -996,7 +986,7 @@ and every instance have the same ``max_id`` value, because the variable is stati
         print(person1.max_id) # 2
         print(person2.max_id) # 2
 
-Static variables can have type hints, setters and getters::
+静态变量可以指定类型、设置 setter 函数和 getter 函数::
 
     static var balance: int = 0
 
@@ -1006,7 +996,7 @@ Static variables can have type hints, setters and getters::
         set(value):
             balance = -value
 
-A base class static variable can also be accessed via a child class::
+父类的静态成员变量也可以在子类中访问::
 
     class A:
         static var x = 1
@@ -1021,52 +1011,43 @@ A base class static variable can also be accessed via a child class::
         B.x = 3
         prints(A.x, B.x) # 3 3
 
-``@static_unload`` annotation
+``@static_unload`` 注解
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since GDScript classes are resources, having static variables in a script prevents it from being unloaded
-even if there are no more instances of that class and no other references left. This can be important
-if static variables store large amounts of data or hold references to other project resources, such as scenes.
-You should clean up this data manually, or use the :ref:`@static_unload <class_@GDScript_annotation_@static_unload>`
-annotation if static variables don't store important data and can be reset.
+GDScript 的类均为资源，而静态变量会阻止脚本资源卸载，即便该脚本所对应的类的实例以及对该实例引用并不存在，静态变量依旧会阻止该脚本资源卸载。在静态变量存储大量数据，同时还含有对其他对象的引用（比如场景）的情况下，更需要引起格外重视。你需要手动清理掉这些数据，亦或是使用 :ref:`@static_unload <class_@GDScript_annotation_@static_unload>` 注解，让静态变量在不存储重要数据时得到重置。
 
 .. warning::
 
-    Currently, due to a bug, scripts are never freed, even if ``@static_unload`` annotation is used.
+    目前由于某个漏洞导致含静态成员变量的脚本实例即使使用了 ``@static_unload`` 注解也无法被清除的问题。
 
-Note that ``@static_unload`` applies to the entire script (including inner classes)
-and must be placed at the top of the script, before ``class_name`` and ``extends``::
+注意： ``@static_unload`` 注解修饰整个脚本（包括内部类），需置于脚本最开头，且位于 ``class_name`` 和 ``extends`` 关键字之前::
 
     @static_unload
     class_name MyNode
     extends Node
 
-See also `Static functions`_ and `Static constructor`_.
+亦可见 `静态函数`_ 和 `静态构造函数`_ 。
 
-Casting
-~~~~~~~
+类型转换
+~~~~~~~~
 
-Values assigned to typed variables must have a compatible type. If it's needed to
-coerce a value to be of a certain type, in particular for object types, you can
-use the casting operator ``as``.
+赋予给指定了类型的变量的值必须具有与其类型相兼容的类型。若需要将值强制转换为特定类型，特别是对于对象类型而言要进行转型，则可以使用强制转型运算符 ``as`` 。
 
-Casting between object types results in the same object if the value is of the
-same type or a subtype of the cast type.
+如果值是对象类型，且为与目标类型相同的类型，亦或为目标类型的子类型，则进行转型后会得到同一个对象。
 
 ::
 
     var my_node2D: Node2D
-    my_node2D = $Sprite2D as Node2D # Works since Sprite2D is a subtype of Node2D.
+    my_node2D = $Sprite2D as Node2D # 之所以有效，是因为 Sprite2D 是 Node2D 的子类型。
 
-If the value is not a subtype, the casting operation will result in a ``null`` value.
+如果该值的类型不是目标类型的子类型，则强制转型操作将产生 ``null`` 值。
 
 ::
 
     var my_node2D: Node2D
-    my_node2D = $Button as Node2D # Results in 'null' since a Button is not a subtype of Node2D.
+    my_node2D = $Button as Node2D # 结果为“null”，因为 Button 不是 Node2D 的子类型。
 
-For built-in types, they will be forcibly converted if possible, otherwise the
-engine will raise an error.
+对于内置类型，如果允许，则将对其进行强制转型，否则将触发报错。
 
 ::
 
@@ -1074,94 +1055,81 @@ engine will raise an error.
     my_int = "123" as int # The string can be converted to int.
     my_int = Vector2() as int # A Vector2 can't be converted to int, this will cause an error.
 
-Casting is also useful to have better type-safe variables when interacting with
-the scene tree::
+与场景树进行交互时，在获取节点这方面，强制转型也更加类型安全，十分有用::
 
-    # Will infer the variable to be of type Sprite2D.
+    # 将推断该变量的类型为 Sprite2D。
     var my_sprite := $Character as Sprite2D
 
-    # Will fail if $AnimPlayer is not an AnimationPlayer, even if it has the method 'play()'.
+    # 如果 $AnimPlayer 不是 AnimationPlayer，即使它具有“play()”方法，也会失败。
     ($AnimPlayer as AnimationPlayer).play("walk")
 
-Constants
+常量
 ---------
 
-Constants are values you cannot change when the game is running.
-Their value must be known at compile-time. Using the
-``const`` keyword allows you to give a constant value a name. Trying to assign a
-value to a constant after it's declared will give you an error.
+常量是游戏运行时不可更改的量，其值在编译时必须已知，可使用 ``const`` 关键字为常量值赋予名称。尝试为常量重新赋值将会触发报错。
 
-We recommend using constants whenever a value is not meant to change.
+建议使用常量来储存不应更改的值。
 
 ::
 
     const A = 5
     const B = Vector2(20, 20)
-    const C = 10 + 20 # Constant expression.
-    const D = Vector2(20, 30).x # Constant expression: 20.
-    const E = [1, 2, 3, 4][0] # Constant expression: 1.
-    const F = sin(20) # 'sin()' can be used in constant expressions.
-    const G = x + 20 # Invalid; this is not a constant expression!
-    const H = A + 20 # Constant expression: 25 (`A` is a constant).
+    const C = 10 + 20 # 常量的表达。
+    const D = Vector2(20, 30).x # 常数的值：20。
+    const E = [1, 2, 3, 4][0] # 常量的值：1。
+    const F = sin(20) # “sin()”可以用在常量表达式中。
+    const G = x + 20 # 无效的;这不是一个常量表达式！
+    const H = A + 20 # 常量的值：25（“A”是常量）。
 
-Although the type of constants is inferred from the assigned value, it's also
-possible to add explicit type specification::
+常量的类型虽然可以从赋予的值中推断出来，但也可以通过显式添加类型来指定::
 
     const A: int = 5
     const B: Vector2 = Vector2()
 
-Assigning a value of an incompatible type will raise an error.
+赋予与指定的类型不相容的值将触发报错。
 
-You can also create constants inside a function, which is useful to name local
-magic values.
+也可以在函数内使用常量来声明一些局部魔法值。
 
-Enums
+枚举
 ~~~~~
 
-Enums are basically a shorthand for constants, and are pretty useful if you
-want to assign consecutive integers to some constant.
+枚举实质上是常量的简写，适用于为某些常量连续赋整数值。
 
 ::
 
     enum {TILE_BRICK, TILE_FLOOR, TILE_SPIKE, TILE_TELEPORT}
 
-    # Is the same as:
+    # 等同于：
     const TILE_BRICK = 0
     const TILE_FLOOR = 1
     const TILE_SPIKE = 2
     const TILE_TELEPORT = 3
 
+若将名称传递给枚举，则该枚举将会把所有键纳入该名称的 :ref:`Dictionary <class_Dictionary>` 中，即字典中的所有常方法均可用于具名枚举当中。
 
-If you pass a name to the enum, it will put all the keys inside a constant
-:ref:`Dictionary <class_Dictionary>` of that name. This means all constant methods of
-a dictionary can also be used with a named enum.
-
-.. important:: Keys in a named enum are not registered
-               as global constants. They should be accessed prefixed
-               by the enum's name (``Name.KEY``).
+.. important:: 
+    从 Godot 3.1 开始，不会再将具名枚举的键注册为全局常量，此后，应在枚举常量前缀以枚举名的形式来访问枚举内的枚举常量（ ``Name.KEY`` ）；见后面的例子。
 
 ::
 
     enum State {STATE_IDLE, STATE_JUMP = 5, STATE_SHOOT}
 
-    # Is the same as:
+    # 等同于：
     const State = {STATE_IDLE = 0, STATE_JUMP = 5, STATE_SHOOT = 6}
-    # Access values with State.STATE_IDLE, etc.
+    # 使用 State.STATE_IDLE 等访问值。
 
     func _ready():
-        # Access values with Name.KEY, prints '5'
+        # 使用 Name.KEY 访问值，打印“5”
         print(State.STATE_JUMP)
-        # Use dictionary methods:
-        # prints '["STATE_IDLE", "STATE_JUMP", "STATE_SHOOT"]'
+        # 使用字典方法：
+        # 打印 '["STATE_IDLE", "STATE_JUMP", "STATE_SHOOT"]'
         print(State.keys())
-        # prints '{ "STATE_IDLE": 0, "STATE_JUMP": 5, "STATE_SHOOT": 6 }'
+        # 打印 '{ "STATE_IDLE": 0, "STATE_JUMP": 5, "STATE_SHOOT": 6 }'
         print(State)
-        # prints '[0, 5, 6]'
+        # 打印 '[0, 5, 6]'
         print(State.values())
 
-If not assigning a value to a key of an enum it will be assigned the previous value plus one,
-or ``0`` if it is the first entry in the enum. Multiple keys with the same value are allowed.
-
+如果未将值分配给枚举的键，则将为其分配前一个值加一，如果它是枚举中的第一个条目，则为 ``0`` 。允许多个键具有相同的值。
 
 Functions
 ---------
