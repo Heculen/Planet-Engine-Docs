@@ -1131,25 +1131,22 @@ GDScript 的类均为资源，而静态变量会阻止脚本资源卸载，即�
 
 如果未将值分配给枚举的键，则将为其分配前一个值加一，如果它是枚举中的第一个条目，则为 ``0`` 。允许多个键具有相同的值。
 
-Functions
+函数
 ---------
 
-Functions always belong to a `class <Classes_>`_. The scope priority for
-variable look-up is: local → class member → global. The ``self`` variable is
-always available and is provided as an option for accessing class members, but
-is not always required (and should *not* be sent as the function's first
-argument, unlike Python).
+函数始终属于 `类 <Classes_>`_ 。查找变量时，函数作用域的查找顺序是：局部 → 类成员 → 全局。引擎始终允许用 ``self`` 作为访问本类及本类成员的关键字，但该关键
+字在一般情况下并无添加的必要（与 Python 不同，在 GDScript 中 *不应该*将 ``self`` 作为函数的第一个参数传递）。
 
 ::
 
     func my_function(a, b):
         print(a)
         print(b)
-        return a + b  # Return is optional; without it 'null' is returned.
+        return a + b  # 返回值是可选的；如果没有它，则返回“null”。
 
-A function can ``return`` at any point. The default return value is ``null``.
+函数可以在任何时候用 ``return`` 返回一个值，默认的返回值为 ``null`` 。
 
-If a function contains only one line of code, it can be written on one line::
+若函数体只含一行语句，则可以将函数及其函数体缩在同一行语句内编写::
 
     func square(a): return a * a
 
@@ -1157,45 +1154,35 @@ If a function contains only one line of code, it can be written on one line::
 
     func empty_function(): pass
 
-Functions can also have type specification for the arguments and for the return
-value. Types for arguments can be added in a similar way to variables::
+也可对函数参数及函数返回值进行类型指定。可使用与声明变量类似的方式添加参数的类型::
 
     func my_function(a: int, b: String):
         pass
 
-If a function argument has a default value, it's possible to infer the type::
+如果函数参数具有默认值，则可以对该参数的类型进行推断::
 
     func my_function(int_arg := 42, String_arg := "string"):
         pass
 
-The return type of the function can be specified after the arguments list using
-the arrow token (``->``)::
+可以在参数列表之后使用箭头标记（ ``->`` ）来指定函数的返回值类型::
 
     func my_int_function() -> int:
         return 0
 
-Functions that have a return type **must** return a proper value. Setting the
-type as ``void`` means the function doesn't return anything. Void functions can
-return early with the ``return`` keyword, but they can't return any value.
+有返回类型的函数 **必须** 返回与返回值类型相匹配的值。将返回值类型设置为 ``void`` 表示该函数不返回任何东西。这种函数称为 *void* 函数，可以使用 ``return`` 关键字提前返回，但不能返回任何值。
 
 ::
 
     func void_function() -> void:
-        return # Can't return a value.
+        return # 无法返回值。
 
-.. note:: Non-void functions must **always** return a value, so if your code has
-          branching statements (such as an ``if``/``else`` construct), all the
-          possible paths must have a return. E.g., if you have a ``return``
-          inside an ``if`` block but not after it, the editor will raise an
-          error because if the block is not executed, the function won't have a
-          valid value to return.
+.. note:: 
+    非 *void* 函数 **必须** 返回一个值，如果你的代码具有分支语句（例如 ``if`` / ``else`` 构造），则所有可能的路径都必须有返回值。例如，如果在 ``if`` 块内有一个 ``return`` ，但在其后没有，则编辑器将抛出一个错误，因为如果该代码块    未执行，那么该函数将没有值进行有效返回。
 
-Referencing functions
+引用函数
 ~~~~~~~~~~~~~~~~~~~~~
 
-Functions are first-class values in terms of the :ref:`Callable <class_Callable>` object.
-Referencing a function by name without calling it will automatically generate the proper
-callable. This can be used to pass functions as arguments.
+就 :ref:`Callable <class_Callable>` 对象而言，函数是一流的值。通过名称引用函数而不调用它会自动生成正确的可调用函数。这可用于将函数作为参数传递。
 
 ::
 
@@ -1211,29 +1198,25 @@ callable. This can be used to pass functions as arguments.
     func _ready() -> void:
         var my_array = [1, 2, 3]
         var plus_one = map(my_array, add1)
-        print(plus_one) # Prints `[2, 3, 4]`.
+        print(plus_one) # 打印 “[2, 3, 4]”。
 
 .. note::
 
-    Callables **must** be called with the :ref:`call() <class_Callable_method_call>` method.
-    You cannot use the ``()`` operator directly. This behavior is implemented to avoid
-    performance issues on direct function calls.
+   可调用对象 **必须** 使用 :ref:`call() <class_Callable_method_call>` 方法进行调用。您不能直接使用 ``()`` 运算符。实现此行为是为了避免直接函数调用的性能问题。
 
-Lambda functions
+Lambda 函数
 ~~~~~~~~~~~~~~~~
 
-Lambda functions allow you to declare functions that do not belong to a class. Instead, a
-:ref:`Callable <class_Callable>` object is created and assigned to a variable directly.
-This can be useful to create callables to pass around without polluting the class scope.
+Lambda 函数允许您声明不属于类的函数。相反，会创建一个 :ref:`Callable <class_Callable>` 对象并直接分配给变量。这对于创建可调用对象来传递而不污染类范围非常有用。
 
 ::
 
     var lambda = func (x):
         print(x)
 
-To call the created lambda you can use the :ref:`call() <class_Callable_method_call>` method::
+要调用创建的 lambda，您可以使用 :ref:`call() <class_Callable_method_call>` 方法::
 
-    lambda.call(42) # Prints `42`.
+    lambda.call(42) # 打印 `42`.
 
 Lambda functions can be named for debugging purposes (the name is displayed in the Debugger)::
 
